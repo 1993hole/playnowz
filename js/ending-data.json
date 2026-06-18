@@ -1,0 +1,166 @@
+{
+  "endings": [
+    {
+      "id": "ending1",
+      "section1": {
+        "type": "individual",
+        "characterImage": "./assets/char/01_hyeonbin_default.png",
+        "headImage": "./assets/char/01_hyeonbin_head.png",
+        "signImage": "./assets/char/01_hyeonbin_sign.png",
+        "voiceFile": "./assets/audio/voice/1_voice_closing.mp3",
+        "position": "외야수(중견수)",
+        "nameKo": "현빈",
+        "nameEn": "HYEONBIN",
+        "description": "언제나 계획적으로 움직이며, 노력으로 자신을 증명하는 선수",
+        "stats": [
+          {"label": "체력", "value": 70},
+          {"label": "승부욕", "value": 70},
+          {"label": "컨디션", "value": 90},
+          {"label": "집중력", "value": 90},
+          {"label": "순발력", "value": 70}
+        ]
+      },
+      "section2": {
+        "title": "꾸준함의 에이스",
+        "hashtags": ["#계획적", "#성실함", "#꾸준함"],
+        "description": "이 선수를 선택한 당신!\n당신은 목표를 향해\n차근차근 단계를 밟아가는 스타일이군요.\n무엇이든 ‘기본기’와 ‘꾸준함’을\n가장 중요한 가치로 두는 타입입니다.\n때로는 완벽을 위해 스스로에게 엄격해지기도 하지만,\n그만큼 결과로 증명해내는 힘을 가지고 있죠.\n오늘의 선택이 앞으로의 결정에서도\n든든한 힘이 되어줄 거예요."
+      }
+    },
+    {
+      "id": "ending2",
+      "section1": {
+        "type": "individual",
+        "characterImage": "./assets/char/02_yoon_default.png",
+        "headImage": "./assets/char/02_yoon_head.png",
+        "signImage": "./assets/char/02_yoon_sign.png",
+        "voiceFile": "./assets/audio/voice/2_voice_closing.mp3",
+        "position": "타자(지명타자)",
+        "nameKo": "윤",
+        "nameEn": "YOON",
+        "description": "상황을 빠르게 읽고, 언제나 한발 앞서 움직이는 선수",
+        "stats": [
+          {"label": "체력", "value": 70},
+          {"label": "승부욕", "value": 50},
+          {"label": "컨디션", "value": 70},
+          {"label": "집중력", "value": 50},
+          {"label": "순발력", "value": 90}
+        ]
+      },
+      "section2": {
+        "title": "판단 빠른 리드오프",
+        "hashtags": ["#순간판단", "#센스", "#전략가"],
+        "description": "이 선수를 선택한 당신!\n당신은 흐름을 읽는 능력이 뛰어나군요.\n어떤 상황에서도 빠르게 적응하고,\n결정해야 할 순간을 놓치지 않는 타입입니다.\n주변을 관찰하고 미래를 예측하는 감각이 뛰어나서\n팀이 흔들릴 때도 중심을 잡아주는 스타일이에요.\n당신의 선택은 기회를 잡는 순간순간에서 빛을 발합니다."
+      }
+    },
+    {
+      "id": "ending3",
+      "section1": {
+        "type": "individual",
+        "characterImage": "./assets/char/03_yeonwoo_default.png",
+        "headImage": "./assets/char/03_yeonwoo_head.png",
+        "signImage": "./assets/char/03_yeonwoo_sign.png",
+        "voiceFile": "./assets/audio/voice/3_voice_closing.mp3",
+        "position": "투수",
+        "nameKo": "연우",
+        "nameEn": "YEONWOO",
+        "description": "철저한 자기관리로 최고의 컨디션을 유지하는 선수",
+        "stats": [
+          {"label": "체력", "value": 90},
+          {"label": "승부욕", "value": 70},
+          {"label": "컨디션", "value": 90},
+          {"label": "집중력", "value": 70},
+          {"label": "순발력", "value": 70}
+        ]
+      },
+      "section2": {
+        "title": "자기관리 최강자",
+        "hashtags": ["#자기관리", "#루틴", "#마인드셋"],
+        "description": "당신은 자신의 페이스와 컨디션을\n섬세하게 관리할 줄 아는 타입이군요.\n몸과 마음의 균형을 중요하게 생각하며,\n‘지속 가능한 성장’을 큰 가치로 둡니다.\n때로는 완벽한 밸런스를 맞추기 위해\n주변과 거리를 두기도 하지만,\n이는 스스로를 지키기 위한 현명한 선택이에요.\n당신의 선택은 안정과 집중을 상징합니다."
+      }
+    },
+    {
+      "id": "ending4",
+      "section1": {
+        "type": "individual",
+        "characterImage": "./assets/char/04_jinhyuk_default.png",
+        "headImage": "./assets/char/04_jinhyuk_head.png",
+        "signImage": "./assets/char/04_jinhyuk_sign.png",
+        "voiceFile": "./assets/audio/voice/4_voice_closing.mp3",
+        "position": "포수",
+        "nameKo": "진혁",
+        "nameEn": "JINHYUK",
+        "description": "팀의 온도를 따뜻하게 바꾸는 다정한 선수",
+        "stats": [
+          {"label": "체력", "value": 50},
+          {"label": "승부욕", "value": 70},
+          {"label": "컨디션", "value": 90},
+          {"label": "집중력", "value": 70},
+          {"label": "순발력", "value": 70}
+        ]
+      },
+      "section2": {
+        "title": "분위기 캐쳐",
+        "hashtags": ["#다정함", "#감정케어", "#따뜻함"],
+        "description": "이 선수를 선택한 당신!\n당신은 팀의 분위기를 바꾸는\n‘온도 조절자’ 같은 사람이군요.\n사람의 마음을 읽는 능력이 뛰어나며,\n누군가가 지쳐 있을 때\n자연스럽게 옆자리를 채워주는 스타일입니다.\n경기력 이상의 가치를 믿고,\n함께한다는 의미를 무엇보다 소중히 여깁니다.\n당신의 존재는 팀 전체를\n부드럽게 감싸는 힘이 있어요."
+      }
+    },
+    {
+      "id": "ending5",
+      "section1": {
+        "type": "individual",
+        "characterImage": "./assets/char/05_siyun_default.png",
+        "headImage": "./assets/char/05_siyun_head.png",
+        "signImage": "./assets/char/05_siyun_sign.png",
+        "voiceFile": "./assets/audio/voice/5_voice_closing.mp3",
+        "position": "내야수(1루수)",
+        "nameKo": "시윤",
+        "nameEn": "SIYUN",
+        "description": "뜨거운 승부욕과 거침없는 에너지로 팀을 이끄는 선수",
+        "stats": [
+          {"label": "체력", "value": 90},
+          {"label": "승부욕", "value": 90},
+          {"label": "컨디션", "value": 70},
+          {"label": "집중력", "value": 50},
+          {"label": "순발력", "value": 70}
+        ]
+      },
+      "section2": {
+        "title": "열정 스위처",
+        "hashtags": ["#승부욕", "#에너지", "#리더십"],
+        "description": "이 선수를 선택한 당신!\n당신은 강력한 추진력과 ‘지금 이 순간’을\n뜨겁게 만드는 에너지를 가진 타입이에요.\n도전 앞에서 망설이지 않고,\n무엇이든 해내고 말겠다는 의지가 강하죠.\n때로는 지나치게 직진적일 때도 있지만,\n그 열정으로 분위기를 뒤집어버리는 능력이 있습니다.\n당신의 선택은 강렬한 집중력과 리더십을 의미합니다."
+      }
+    },
+    {
+      "id": "ending6",
+      "section1": {
+        "type": "team",
+        "teamImage": "./assets/char/0_team.png",
+        "carouselImages": [
+          "./assets/char/0_team_head.png",
+          "./assets/char/01_hyeonbin_head.png",
+          "./assets/char/02_yoon_head.png",
+          "./assets/char/03_yeonwoo_head.png",
+          "./assets/char/04_jinhyuk_head.png",
+          "./assets/char/05_siyun_head.png"
+        ],
+        "voiceFile": "./assets/audio/voice/0_voice_teamwork.mp3",
+        "position": "TEAM",
+        "nameKo": "Play NOWZ",
+        "nameEn": "Underdog Rookies",
+        "description": "다른 리듬으로 뛰지만, 같은 꿈을 향해 달리는 팀",
+        "stats": [
+          {"label": "체력", "value": 100},
+          {"label": "승부욕", "value": 100},
+          {"label": "컨디션", "value": 100},
+          {"label": "집중력", "value": 100},
+          {"label": "순발력", "value": 100}
+        ]
+      },
+      "section2": {
+        "title": "퍼펙트 라인업",
+        "hashtags": ["#자유로움", "#다양성", "#조화"],
+        "description": "팀을 선택한 당신!\n당신은 모두가 똑같을 필요는 없다는 걸\n잘 아는 타입이군요.\n각자의 방식과 속도를 존중하며,\n‘다름이 곧 힘’이 된다는 믿음을 가지고 있어요.\n조직 속에서도 자신의 고유한 리듬을 지키면서,\n동시에 팀의 목표에는 진심을 다하는 모습이 돋보입니다.\n당신의 선택은 조화와 개성을 동시에 품은 가치입니다."
+      }
+    }
+  ]
+}

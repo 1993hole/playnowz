@@ -1,0 +1,1916 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ===== 사운드 on/off 버튼 (좌측 상단) ===== */
+#page-ending .sound-toggle {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    left: max(16px, env(safe-area-inset-left));
+    z-index: 1000;
+    background: transparent;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity .2s ease, transform .2s ease;
+}
+#page-ending .sound-toggle:hover {
+    opacity: .8;
+    transform: scale(1.05);
+}
+#page-ending .sound-toggle:active {
+    transform: scale(0.95);
+}
+#page-ending .sound-toggle img {
+    display: block;
+    width: clamp(36px, 5vw, 48px);
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+@media (max-width: 768px) {
+    #page-ending .sound-toggle img { 
+        width: clamp(32px, 6vw, 40px); 
+    }
+}
+
+/* ==================== Section 1: 프로필 ==================== */
+#profile {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../assets/bg/Br_cabinet2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 60px 20px 0;
+}
+
+#profile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(292deg, #FFF 26.94%, rgba(255, 255, 255, 0.17) 88.86%);
+    z-index: 0;
+}
+
+.profile-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* ==================== 캐릭터 이미지 영역 (공통) ==================== */
+.character-area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    animation: fadeInLeft 0.8s ease-out 0.3s backwards;
+}
+
+/* ==================== 개인 프로필 이미지 ==================== */
+.character-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+}
+
+.character-img {
+    width: 100%;
+    aspect-ratio: 650 / 900;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(-50px 0 0 rgba(0, 0, 0, 0.5));
+    background-image: url('../assets/char/01_hyeonbin_default.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.sign-img {
+    position: absolute;
+    bottom: 50px;
+    right: -20px;
+    width: 216px;
+    height: 216px;
+    z-index: 3;
+    background-image: url('../assets/char/01_hyeonbin_sign.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* ==================== 팀 프로필 이미지 ==================== */
+/* PC용 팀 이미지 */
+.team-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+}
+
+.team-img {
+    width: 100%;
+    aspect-ratio: 650 / 900;
+    display: block;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(-50px 0 0 rgba(0, 0, 0, 0.5));
+    background-image: url('../assets/char/0_team.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+/* 모바일용 팀 캐러셀 */
+.team-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.carousel-radio {
+    display: none;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.5s ease;
+    will-change: transform;
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: all 0.4s ease;
+}
+
+.carousel-img {
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;
+    aspect-ratio: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+    display: block;
+    transition: all 0.4s ease;
+}
+
+/* 각 슬라이드별 이미지 */
+.carousel-img-team {
+    background-image: url('../assets/char/0_team_head.png');
+}
+
+.carousel-img-hyeonbin {
+    background-image: url('../assets/char/01_hyeonbin_head.png');
+}
+
+.carousel-img-yoon {
+    background-image: url('../assets/char/02_yoon_head.png');
+}
+
+.carousel-img-yeonwoo {
+    background-image: url('../assets/char/03_yeonwoo_head.png');
+}
+
+.carousel-img-jinhyuk {
+    background-image: url('../assets/char/04_jinhyuk_head.png');
+}
+
+.carousel-img-siyun {
+    background-image: url('../assets/char/05_siyun_head.png');
+}
+
+/* 화살표 버튼 공통 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: none;
+}
+
+.carousel-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.prev::before {
+    transform: translate(-40%, -50%) rotate(-135deg);
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn.next::before {
+    transform: translate(-60%, -50%) rotate(45deg);
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Radio 체크 상태에 따라 슬라이드 이동 */
+#slide1:checked ~ .carousel-container .carousel-track {
+    transform: translateX(0%);
+}
+
+#slide2:checked ~ .carousel-container .carousel-track {
+    transform: translateX(-100%);
+}
+
+#slide3:checked ~ .carousel-container .carousel-track {
+    transform: translateX(-200%);
+}
+
+#slide4:checked ~ .carousel-container .carousel-track {
+    transform: translateX(-300%);
+}
+
+#slide5:checked ~ .carousel-container .carousel-track {
+    transform: translateX(-400%);
+}
+
+#slide6:checked ~ .carousel-container .carousel-track {
+    transform: translateX(-500%);
+}
+
+/* Radio 체크 상태에 따라 버튼 표시 */
+#slide1:checked ~ .prev-controls label:nth-child(1),
+#slide2:checked ~ .prev-controls label:nth-child(2),
+#slide3:checked ~ .prev-controls label:nth-child(3),
+#slide4:checked ~ .prev-controls label:nth-child(4),
+#slide5:checked ~ .prev-controls label:nth-child(5),
+#slide6:checked ~ .prev-controls label:nth-child(6) {
+    display: block;
+}
+
+#slide1:checked ~ .next-controls label:nth-child(1),
+#slide2:checked ~ .next-controls label:nth-child(2),
+#slide3:checked ~ .next-controls label:nth-child(3),
+#slide4:checked ~ .next-controls label:nth-child(4),
+#slide5:checked ~ .next-controls label:nth-child(5),
+#slide6:checked ~ .next-controls label:nth-child(6) {
+    display: block;
+}
+
+/* 인디케이터 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: default;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+    pointer-events: none;
+}
+
+/* Radio 체크 상태에 따라 인디케이터 활성화 */
+#slide1:checked ~ .carousel-indicators label:nth-child(1),
+#slide2:checked ~ .carousel-indicators label:nth-child(2),
+#slide3:checked ~ .carousel-indicators label:nth-child(3),
+#slide4:checked ~ .carousel-indicators label:nth-child(4),
+#slide5:checked ~ .carousel-indicators label:nth-child(5),
+#slide6:checked ~ .carousel-indicators label:nth-child(6) {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.3);
+}
+
+/* ==================== 레이아웃 타입별 표시/숨김 ==================== */
+/* 기본: 개인 프로필 표시 (JS 없이 테스트 가능) */
+.individual-layout {
+    display: block;
+}
+
+/* 기본: 팀 프로필 숨김 (JS로 제어) */
+.team-layout {
+    display: none;
+}
+
+/* 팀 레이아웃 PC/모바일 제어 - 기본값 (PC 우선) */
+.team-layout.show.team-pc {
+    display: block;
+}
+
+.team-layout.show.team-mobile {
+    display: none;
+}
+
+/* ==================== 프로필 정보 + 스탯 (개인/팀 공통) ==================== */
+.info-stats-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.position-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 8px 24px;
+    background: linear-gradient(135deg, #e6022d 0%, #e65739 100%);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 20px;
+    pointer-events: none;
+    animation: fadeInDown 0.6s ease-out 0.1s backwards;
+}
+
+.name-section {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    animation: fadeInUp 0.6s ease-out 0.6s backwards;
+}
+
+.name-en {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+/* Voice 버튼 래퍼 */
+.name-en-voice-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Voice 버튼 */
+.voice-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: #FF4444;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+}
+
+.voice-btn:hover {
+    background: #E63939;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.4);
+}
+
+.voice-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(255, 68, 68, 0.3);
+}
+
+.voice-icon {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.voice-text {
+    line-height: 1;
+}
+
+.name-ko {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.2;
+}
+
+.character-desc {
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.6;
+    animation: fadeIn 0.6s ease-out 0.8s backwards;
+}
+
+/* 스테이터스 게이지 영역 */
+.stats-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.stat-item {
+    width: 100%;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-item:nth-child(1) {
+    animation: fadeInLeft 0.5s ease-out 1.0s backwards;
+}
+
+.stat-item:nth-child(1) .gauge-fill {
+    animation: fillGauge 1.5s ease-out 1.0s forwards;
+}
+
+.stat-item:nth-child(2) {
+    animation: fadeInLeft 0.5s ease-out 1.1s backwards;
+}
+
+.stat-item:nth-child(2) .gauge-fill {
+    animation: fillGauge 1.5s ease-out 1.1s forwards;
+}
+
+.stat-item:nth-child(3) {
+    animation: fadeInLeft 0.5s ease-out 1.2s backwards;
+}
+
+.stat-item:nth-child(3) .gauge-fill {
+    animation: fillGauge 1.5s ease-out 1.2s forwards;
+}
+
+.stat-item:nth-child(4) {
+    animation: fadeInLeft 0.5s ease-out 1.3s backwards;
+}
+
+.stat-item:nth-child(4) .gauge-fill {
+    animation: fillGauge 1.5s ease-out 1.3s forwards;
+}
+
+.stat-item:nth-child(5) {
+    animation: fadeInLeft 0.5s ease-out 1.4s backwards;
+}
+
+.stat-item:nth-child(5) .gauge-fill {
+    animation: fillGauge 1.5s ease-out 1.4s forwards;
+}
+
+.stat-label {
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 60px;
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.stat-value {
+    color: #e6022d;
+    font-size: 16px;
+    display: none;
+}
+
+.gauge-container {
+    position: relative;
+    flex: 1;
+    height: 30px;
+}
+
+.gauge-background {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #151414 0%, #4c4a4b 100%);
+    transform: skewX(-30deg);
+    box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+.gauge-fill {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    height: auto;
+    width: auto;
+    background: linear-gradient(135deg, #e6022d 0%, #e65739 100%);
+    transform-origin: left center;
+}
+
+@keyframes fillGauge {
+    from {
+        width: 0%;
+    }
+    to {
+        width: calc(var(--gauge-percent) - 2px);
+    }
+}
+
+/* ==================== 페이지 로드 애니메이션 ==================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==================== 태블릿 레이아웃 (1024px 이하) ==================== */
+@media (max-width: 1024px) {
+    #profile {
+        padding: 60px 30px;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .profile-container {
+        max-width: 768px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* 순서 1: 포지션 배지 */
+    .position-badge {
+        order: 1;
+        margin: 0 auto;
+    }
+
+    /* 순서 2: 캐릭터 이미지 */
+    .character-area {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    /* 개인 프로필 - 태블릿/모바일 */
+    .character-image-wrapper {
+        max-width: 400px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .character-img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-image: url('../assets/char/01_hyeonbin_head.png');
+    }
+
+    .sign-img {
+        width: 160px;
+        height: 160px;
+        bottom: 30px;
+        right: -20px;
+    }
+
+    /* 팀 프로필 - 태블릿/모바일: 캐러셀 표시 (team-layout이 켜져있을 때만) */
+    .team-layout.show.team-pc {
+        display: none;
+    }
+
+    .team-layout.show.team-mobile {
+        display: block;
+    }
+
+    .carousel-img {
+        max-width: 400px;
+        min-height: 400px;
+    }
+
+    /* 순서 3: 이름 섹션 */
+    .name-section {
+        order: 3;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .name-ko {
+        font-size: 42px;
+    }
+
+    .name-en {
+        font-size: 20px;
+    }
+
+    /* Voice 버튼 래퍼 - 모바일 */
+    .name-en-voice-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .voice-btn {
+        padding: 6px 12px;
+        font-size: 15px;
+    }
+
+    /* 순서 4: 캐릭터 설명 */
+    .character-desc {
+        order: 4;
+        font-size: 18px;
+        max-width: 600px;
+    }
+
+    /* 순서 5: 스탯 영역 */
+    .stats-area {
+        order: 5;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* info-stats-wrapper를 해체 */
+    .info-stats-wrapper {
+        display: contents;
+    }
+
+    .profile-info {
+        display: contents;
+    }
+
+    .gauge-container {
+        height: 30px;
+    }
+}
+
+/* ==================== 모바일 레이아웃 (767px 이하) ==================== */
+@media (max-width: 767px) {
+    #profile {
+        padding: 40px 20px;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .profile-container {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0;
+        text-align: center;
+        overflow: visible;
+    }
+
+    /* 순서 1: 포지션 배지 */
+    .position-badge {
+        order: 1;
+        font-size: 14px;
+        padding: 6px 20px;
+        margin: 0 auto;
+    }
+
+    /* 순서 2: 캐릭터 이미지 */
+    .character-area {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        overflow: visible;
+    }
+
+    /* 개인 프로필 - 모바일 */
+    .character-image-wrapper {
+        max-width: 280px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .character-img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    .sign-img {
+        width: 120px;
+        height: 120px;
+        bottom: 20px;
+        right: -15px;
+    }
+
+    /* 팀 프로필 - 모바일 */
+    .team-carousel-wrapper {
+        min-height: 350px;
+    }
+
+    .carousel-img {
+        max-width: 280px;
+        min-height: 280px;
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-btn::before {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* 순서 3: 이름 섹션 */
+    .name-section {
+        order: 3;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .name-ko {
+        font-size: 32px;
+    }
+
+    .name-en {
+        font-size: 18px;
+    }
+
+    /* 순서 4: 캐릭터 설명 */
+    .character-desc {
+        order: 4;
+        font-size: 16px;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    /* 순서 5: 스탯 영역 */
+    .stats-area {
+        order: 5;
+        width: 100%;
+    }
+
+    /* info-stats-wrapper를 해체 */
+    .info-stats-wrapper {
+        display: contents;
+    }
+
+    .profile-info {
+        display: contents;
+    }
+
+    .stat-item {
+        margin-bottom: 12px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+        min-width: 45px;
+    }
+
+    .gauge-container {
+        height: 20px;
+    }
+}
+
+/* PC에서 캐러셀 화살표 버튼 숨김 */
+@media (min-width: 1025px) {
+    .carousel-btn {
+        display: none !important;
+    }
+    
+    /* PC에서 팀 프로필: PC용만 표시 (team-layout이 켜져있을 때만) */
+    .team-layout.show.team-pc {
+        display: block;
+    }
+    
+    .team-layout.show.team-mobile {
+        display: none;
+    }
+}
+/* ==================== Section 2: 배경 + 텍스트 + 버튼 ==================== */
+#section2 {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../assets/bg/Br_training.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    color: #fff;
+}
+
+/* 60% 블랙 오버레이 */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+/* 컨텐츠 래퍼 */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+/* 제목 */
+.title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    margin-bottom: 40px;
+}
+
+/* 해시태그 그룹 */
+.hashtags {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.hashtag {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.hashtag:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* 설명글 */
+.description {
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.8;
+    margin-bottom: 60px;
+    opacity: 0.9;
+}
+
+/* 버튼 그룹 */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* 공통 버튼 스타일 (앨범 페이지 스타일 적용) */
+.btn {
+    display: inline-block;
+    padding: clamp(14px, 2vh, 20px) clamp(24px, 3.5vw, 36px);
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: clamp(10px, 1.5vw, 14px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 프로필 공유하기 버튼 */
+.btn-share {
+    background: linear-gradient(135deg, #c31808 0%, #a01406 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-share:hover {
+    background: linear-gradient(135deg, #d41a09 0%, #b01507 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(195, 24, 8, 0.4);
+}
+
+.btn-share:active {
+    transform: translateY(0);
+}
+
+/* 메인으로 가기 버튼 */
+.btn-main {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-main:hover {
+    background: linear-gradient(135deg, #333 0%, #111 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.btn-main:active {
+    transform: translateY(0);
+}
+
+/* ==================== Section 3: 앨범 페이지 ==================== */
+#section3 {
+    width: 100%;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 블러 배경 이미지 */
+#section3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bg/nowz_concept.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(15px);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+/* 어두운 오버레이 (선택사항) */
+#section3::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* 앨범 페이지 그리드 */
+.album-page {
+    width: 100%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: minmax(420px, 1.35fr) minmax(320px, 0.65fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* CD 플레이어 */
+.player {
+    position: relative;
+    width: min(820px, 100%);
+    max-width: 100%;
+    aspect-ratio: 1/1;
+    filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
+    justify-self: start;
+    display: flex;
+    align-items: center;
+}
+
+.player-inner {
+    --sleeve-pct: 64%;
+    --cd-scale: 1.6;
+    position: relative;
+    width: calc(var(--sleeve-pct) + var(--sleeve-pct) * var(--cd-scale) * 0.5);
+    height: calc(var(--sleeve-pct) * var(--cd-scale));
+}
+
+/* 앨범 슬리브 */
+.sleeve {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--sleeve-pct);
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: center / cover no-repeat url('../assets/svg/album-cover.svg');
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.24);
+    z-index: 2;
+}
+
+/* CD 클립 윈도우 */
+.clip-window {
+    position: absolute;
+    left: var(--sleeve-pct);
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(var(--sleeve-pct) * var(--cd-scale) * 0.5);
+    height: 100%;
+    overflow: visible;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* CD 디스크 */
+.disc {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--sleeve-pct) * var(--cd-scale));
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: center / cover no-repeat url('../assets/svg/album-disc.svg');
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: spin 2.8s linear infinite;
+    will-change: transform;
+}
+
+/* 디스크 허브 효과 */
+.disc::before,
+.disc::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.disc::before {
+    width: 20%;
+    height: 20%;
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.1));
+    filter: blur(0.5px);
+    mix-blend-mode: multiply;
+}
+
+.disc::after {
+    width: 10%;
+    height: 10%;
+    background: radial-gradient(closest-side, #cfcfcf 35%, #999 36%, #666 45%, #222 55%, transparent 56%);
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .disc {
+        animation: none;
+    }
+}
+
+/* 앨범 정보 */
+.album-info {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.6vw, 16px);
+    justify-self: stretch;
+}
+
+.album-title {
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.05;
+    color: #ffffff;
+}
+
+.album-sub {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #c9d6df;
+}
+
+.album-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 8px;
+}
+
+.pill {
+    background: #2b3440;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.divider {
+    opacity: 0.5;
+    color: #ffffff;
+}
+
+/* MV 버튼 */
+.mv-button-wrapper {
+    margin-top: 12px;
+}
+
+.btn-mv {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: clamp(14px, 2vh, 20px) clamp(24px, 3.5vw, 36px);
+    border-radius: clamp(10px, 1.5vw, 14px);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.btn-mv:hover {
+    background: linear-gradient(135deg, #333 0%, #111 100%);
+    transform: translateY(-2px);
+}
+
+.btn-mv:active {
+    transform: translateY(0);
+}
+
+/* ==================== 태블릿 레이아웃 (Section 3) ==================== */
+@media (max-width: 1024px) {
+    .album-page {
+        max-width: 768px;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .player {
+        width: min(540px, 85vw);
+        justify-self: center;
+        filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.28));
+        justify-content: center;
+    }
+
+    .player-inner {
+        margin-left: calc((var(--sleeve-pct) + var(--sleeve-pct) * var(--cd-scale) * 0.5 - 100%) / 2);
+    }
+
+    .album-info {
+        justify-self: center;
+    }
+
+    .album-meta {
+        justify-content: center;
+    }
+}
+
+/* ==================== 모바일 레이아웃 (Section 3) ==================== */
+@media (max-width: 767px) {
+    #section3 {
+        padding: 40px 30px;
+    }
+
+    .player {
+        width: min(280px, 82vw);
+        filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.25));
+    }
+}
+
+
+
+/* ==================== 태블릿 레이아웃 (768px) ==================== */
+@media (max-width: 1024px) {
+    #profile {
+        padding: 60px 30px;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .profile-container {
+        max-width: 768px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 0;
+        text-align: center;
+    }
+
+    /* 순서 1: 포지션 배지 */
+    .position-badge {
+        order: 1;
+        margin: 0 auto;
+    }
+
+    /* 순서 2: 캐릭터 이미지 */
+    .character-area {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .character-image-wrapper {
+        max-width: 500px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .character-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background-image: url('../assets/char/01_hyeonbin_head.png');
+    }
+
+    .sign-img {
+        width: 160px;
+        height: 160px;
+        bottom: 30px;
+        right: -20px;
+    }
+
+    /* 순서 3: 이름 섹션 */
+    .name-section {
+        order: 3;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .name-ko {
+        font-size: 42px;
+    }
+
+    .name-en {
+        font-size: 20px;
+    }
+
+    /* 순서 4: 캐릭터 설명 */
+    .character-desc {
+        order: 4;
+        font-size: 18px;
+        max-width: 600px;
+    }
+
+    /* 순서 5: 스탯 영역 */
+    .stats-area {
+        order: 5;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* info-stats-wrapper를 해체 */
+    .info-stats-wrapper {
+        display: contents;
+    }
+
+    .profile-info {
+        display: contents;
+    }
+
+    .gauge-container {
+        height: 30px;
+    }
+
+    /* Section 2 태블릿 */
+    #section2 {
+        padding: 50px 30px;
+    }
+
+    .title {
+        font-size: 42px;
+        margin-bottom: 30px;
+    }
+
+    .hashtags {
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .hashtag {
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+
+    .description {
+        font-size: 18px;
+        margin-bottom: 50px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 14px 35px;
+        min-width: 180px;
+    }
+}
+
+/* ==================== 모바일 레이아웃 (360px) ==================== */
+@media (max-width: 767px) {
+    #profile {
+        padding: 40px 20px;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .profile-container {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 0;
+        text-align: center;
+        overflow: visible;
+    }
+
+    /* 순서 1: 포지션 배지 */
+    .position-badge {
+        order: 1;
+        font-size: 14px;
+        padding: 6px 20px;
+        margin: 0 auto;
+    }
+
+    /* 순서 2: 캐릭터 이미지 */
+    .character-area {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        overflow: visible;
+    }
+
+    .character-image-wrapper {
+        max-width: 320px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .character-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background-image: url('../assets/char/01_hyeonbin_head.png');
+    }
+
+    .sign-img {
+        width: 120px;
+        height: 120px;
+        bottom: 20px;
+        right: -15px;
+    }
+
+    /* 순서 3: 이름 섹션 */
+    .name-section {
+        order: 3;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .name-ko {
+        font-size: 32px;
+    }
+
+    .name-en {
+        font-size: 18px;
+    }
+
+    /* 순서 4: 캐릭터 설명 */
+    .character-desc {
+        order: 4;
+        font-size: 16px;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    /* 순서 5: 스탯 영역 */
+    .stats-area {
+        order: 5;
+        width: 100%;
+    }
+
+    /* info-stats-wrapper를 해체 */
+    .info-stats-wrapper {
+        display: contents;
+    }
+
+    .profile-info {
+        display: contents;
+    }
+
+    .stat-item {
+        margin-bottom: 12px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+        min-width: 45px;
+    }
+
+    .gauge-container {
+        height: 20px;
+    }
+
+    /* Section 2 모바일 */
+    #section2 {
+        padding: 40px 30px;
+    }
+
+    .title {
+        font-size: 32px;
+        margin-bottom: 25px;
+    }
+
+    .hashtags {
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .hashtag {
+        font-size: 14px;
+        padding: 7px 18px;
+    }
+
+    .description {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 14px 30px;
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+/* ==================== Section 4: 디졸브 슬라이드 ==================== */
+#section4 {
+    width: 100%;
+    min-height: 70vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+/* 슬라이드쇼 컨테이너 */
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* 슬라이드 공통 스타일 */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: dissolve 12s infinite;
+}
+
+/* 각 슬라이드별 배경 이미지 */
+.slide1 {
+    background-image: url('../assets/bg/B_title.jpg');
+    animation-delay: 0s;
+}
+
+.slide2 {
+    background-image: url('../assets/bg/Br_training3.jpg');
+    animation-delay: 3s;
+}
+
+.slide3 {
+    background-image: url('../assets/bg/Br_ground5.jpg');
+    animation-delay: 6s;
+}
+
+.slide4 {
+    background-image: url('../assets/bg/Br_room.jpg');
+    animation-delay: 9s;
+}
+
+/* 디졸브 애니메이션 */
+@keyframes dissolve {
+    0% {
+        opacity: 0;
+    }
+    8.33% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    33.33% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* 오버레이 */
+.section4-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* 컨텐츠 영역 */
+.section4-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* 텍스트 */
+.section4-text {
+    font-size: 24px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.8;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+    #section4 {
+        min-height: 60vh;
+        padding: 50px 30px;
+    }
+
+    .section4-text {
+        font-size: 20px;
+    }
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+    #section4 {
+        min-height: 50vh;
+        padding: 40px 30px;
+    }
+
+    .section4-text {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .section4-content {
+        gap: 30px;
+    }
+}
+
+/* ==================== Section 5: SNS 링크 ==================== */
+#section5 {
+    width: 100%;
+    min-height: 50vh;
+    background-color: #000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.section5-content {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.section5-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.sns-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.sns-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 140px;
+}
+
+.sns-icon {
+    font-size: 36px;
+    line-height: 1;
+}
+
+.sns-name {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.sns-btn:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.sns-btn:active {
+    transform: translateY(-2px);
+}
+
+/* 각 SNS별 호버 색상 */
+.sns-instagram:hover {
+    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.sns-x:hover {
+    background: linear-gradient(135deg, #000 0%, #333 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.sns-berriz:hover {
+    background: linear-gradient(135deg, #e60578 0%, #c0045f 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.sns-youtube:hover {
+    background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 태블릿 */
+@media (max-width: 1024px) {
+    #section5 {
+        padding: 50px 30px;
+    }
+
+    .section5-title {
+        font-size: 28px;
+    }
+
+    .sns-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        max-width: 600px;
+    }
+
+    .sns-btn {
+        padding: 25px 15px;
+        min-height: 120px;
+    }
+
+    .sns-icon {
+        font-size: 32px;
+    }
+
+    .sns-name {
+        font-size: 15px;
+    }
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+    #section5 {
+        padding: 40px 30px;
+        min-height: auto;
+    }
+
+    .section5-title {
+        font-size: 22px;
+    }
+
+    .sns-links {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        max-width: 400px;
+    }
+
+    .sns-btn {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 16px;
+        padding: 20px 24px;
+        min-height: auto;
+    }
+
+    .sns-icon {
+        font-size: 28px;
+    }
+
+    .sns-name {
+        font-size: 16px;
+        text-align: left;
+        flex: 1;
+    }
+
+    .section5-content {
+        gap: 30px;
+    }
+}

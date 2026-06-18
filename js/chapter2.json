@@ -1,0 +1,450 @@
+{
+  "scenes": [
+    {
+      "id": 1,
+      "type": "chapter_title",
+      "title": "Chapter 2: 첫 경기",
+      "sceneSubtitle": "\"Play NOWZ\" 우리들의 첫 번째 시작",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 2,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "구장 - 6:00 PM",
+      "character": "char_null.png",
+      "background": "Br_ground4.jpg",
+      "bgm": "chapter2-1.mp3"
+    },
+    {
+      "id": 3,
+      "type": "dialogue",
+      "dialogue": "저녁 햇빛이 서서히 기울며 구장은 붉게 물든다.",
+      "background": "Br_ground4.jpg",
+      "sfx": "Sports_Crowd01.mp3"
+    },
+    {
+      "id": 4,
+      "type": "dialogue",
+      "dialogue": "상대팀 벤치 쪽은 이미 함성과 박수 소리, 응원단이 외치는 구호로 가득하다.",
+      "sfx": "Sports_Crowd02.mp3"
+    },
+    {
+      "id": 5,
+      "type": "dialogue",
+      "dialogue": "관중석 대부분은 상대팀 팬들이 차지하고 있고,\n우리는 숨을 고르며 이 기류를 견디고 있을 뿐이다."
+    },
+    {
+      "id": 6,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "와, 진짜 대단하네요. 귀가 울릴 정도예요.",
+      "character": "05_siyun_default.png"
+    },
+    {
+      "id": 7,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "하지만! 다들 겁먹은 건 아니죠?\n전 무섭지 않아요. 이런 무대에서 뛰는 게 꿈이었거든요.",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_laugh2.mp3"
+    },
+    {
+      "id": 8,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "하하하! 귀가 울리는 정도가 아니라, 귀가 찢어질 것 같은데?",
+      "character": "02_yoon_happy.png",
+      "voice": "2_voice_laugh1.mp3"
+    },
+    {
+      "id": 9,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "코치님. 그런데 상상돼요?\n제가 딱 한 방만 때리면 이 함성이 전부 뒤집히는 거잖아요.",
+      "character": "02_yoon_smile.png"
+    },
+    {
+      "id": 10,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "그 생각 하나면, 버틸 수 있어요.",
+      "character": "02_yoon_happy.png"
+    },
+    {
+      "id": 11,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "호흡, 호흡... 후. 괜찮습니다. 코치님, 오늘은 제 전부를 던질 거니까요.",
+      "character": "03_yeonwoo_default.png",
+      "sfx": "breaths_fast01.mp3"
+    },
+    {
+      "id": 12,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "실수해도 변명하지 않을게요. 책임은 전부 제가 집니다.",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 13,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "실책 없는 경기. 그게 제 목표예요.\n아무리 벅찬 경기가 되어도, 저는 제 자리에서 공을 흘리지 않을 겁니다.",
+      "character": "01_hyeonbin_default.png"
+    },
+    {
+      "id": 14,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "단 한 번도.",
+      "character": "01_hyeonbin_default.png"
+    },
+    {
+      "id": 15,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "괜찮아. 실수해도 돼…",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 16,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "내가 다 받아줄게. 오늘은 마음껏 던지고... 마음껏 휘둘러.",
+      "character": "04_jinhyuk_smile.png"
+    },
+    {
+      "id": 17,
+      "type": "dialogue",
+      "dialogue": "그렇게 말하는 팀원들의 표정은 긴장, 다짐, 설렘이 어지럽게 뒤섞여 있다."
+    },
+    {
+      "id": 18,
+      "type": "dialogue",
+      "dialogue": "코치인 당신의 말 한 마디로, 이들을 더욱 단단하게 만들 수도, 더욱 강하게 만들 수도 있다."
+    },
+    {
+      "id": 19,
+      "type": "choice",
+      "question": "코치인 당신의 말 한 마디로, 이들을 더욱 단단하게 만들 수도, 더욱 강하게 만들 수도 있다.",
+      "choices": [
+        {
+          "text": "실수해도 괜찮아. 옆 사람을 믿고\n서로 메워주자. 그게 팀이니까.",
+          "nextSceneId": null
+        },
+        {
+          "text": "오늘은 기록에 남는 날이야.\n웃든 울든, 후회 없이 경기에 임하자.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "경기 초반 - 6:30 PM",
+      "character": "char_null.png",
+      "background": "Br_ground4.jpg",
+      "bgm": "chapter2-2.mp3"
+    },
+    {
+      "id": 21,
+      "type": "dialogue",
+      "dialogue": "상대팀의 명성은 괜한 것이 아니었다.",
+      "background": "Br_ground4.jpg",
+      "sfx": "whistle.mp3"
+    },
+    {
+      "id": 22,
+      "type": "dialogue",
+      "dialogue": "재빠른 주자, 묵직한 타격, 빈틈없는 수비.\n우리는 최선을 다했지만, 조금씩 밀리고 있음을 모두가 직감한 듯 하다."
+    },
+    {
+      "id": 23,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "......스트라이크!",
+      "character": "03_yeonwoo_worry.png",
+      "sfx": "MP_hardball.mp3"
+    },
+    {
+      "id": 24,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "코치님! 아직 괜찮아요.",
+      "character": "03_yeonwoo_worry.png",
+      "voice": "3_voice_yes1.mp3"
+    },
+    {
+      "id": 25,
+      "type": "dialogue",
+      "dialogue": "하지만 상대팀은 공 하나하나를 놓치지 않는다."
+    },
+    {
+      "id": 26,
+      "type": "dialogue",
+      "dialogue": "안타, 도루, 화려한 전술이 이어지며 다시 점수가 나고, 또 다시 격차가 벌려진다.",
+      "sfx": "MP_batswing.mp3"
+    },
+    {
+      "id": 27,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "괜찮아, 이제 시작이야!",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 28,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "쳇, 소리가 너무 커서 집중이 안 돼요.",
+      "character": "02_yoon_default.png",
+      "voice": "2_voice_tsk.mp3"
+    },
+    {
+      "id": 29,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "괜찮아, 형. 아직 기회는 있어... 천천히 해.",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 30,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "다들 기운 냅시다! 이 정도야, 충분히 버틸 수 있어요!",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_laugh1.mp3"
+    },
+    {
+      "id": 31,
+      "type": "dialogue",
+      "dialogue": "하지만 야구장에 감도는 분위기마저 상대팀 쪽으로 기울고 있었다."
+    },
+    {
+      "id": 32,
+      "type": "dialogue",
+      "dialogue": "팀원들의 표정도 점점 딱딱하게 굳는다. 벤치 안에는 묘한 불안이 흐르고 있다."
+    },
+    {
+      "id": 33,
+      "type": "choice",
+      "question": "어떻게 격려할까?",
+      "choices": [
+        {
+          "text": "상대가 강한 건 사실이야.\n하지만 우린 더 끈질기게 물고 늘어져야 해.",
+          "nextSceneId": null
+        },
+        {
+          "text": "이 무대 자체가 우리에겐 경험이야.\n긴장 풀고, 마음껏 부딪혀 봐.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "type": "dialogue",
+      "dialogue": "내 말을 듣는 아이들의 표정은 긴장한 듯 묘한 얼굴이었다."
+    },
+    {
+      "id": 35,
+      "type": "dialogue",
+      "dialogue": "나는 그렇게 격려 아닌 격려의 말을 건네며, 불안한 마음으로 경기를 지켜본다."
+    },
+    {
+      "id": 36,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "경기 중반 - 8:00 PM",
+      "character": "char_null.png",
+      "background": "Br_ground2.jpg",
+      "bgm": "chapter2-3.mp3"
+    },
+    {
+      "id": 37,
+      "type": "dialogue",
+      "dialogue": "중반으로 넘어가자 점수 차는 더욱 벌어졌다.",
+      "background": "Br_ground2.jpg",
+      "sfx": "Sports_Crowd03.mp3"
+    },
+    {
+      "id": 38,
+      "type": "dialogue",
+      "dialogue": "그러나 이상하게도, 팀원들을 바라보면 걱정이 사라지는 기분이 든다. 아이들의 눈빛은 여전히 살아 있었다."
+    },
+    {
+      "id": 39,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "하하, 드디어 맞췄네요~",
+      "character": "02_yoon_smile.png"
+    },
+    {
+      "id": 40,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "한 방은 해냈어요. 이제부터 시작이죠?",
+      "character": "02_yoon_happy.png"
+    },
+    {
+      "id": 41,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "후, 체력이 금방 빠지네요. 그래도 아직 버틸 수 있습니다. 코치님, 우리 모두 아직 괜찮습니다.",
+      "character": "03_yeonwoo_smile.png",
+      "voice": "3_voice_sigh.mp3"
+    },
+    {
+      "id": 42,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "연우 형, 페이스 조금 조절해도 돼. 형 어깨에 전부 걸려 있어.",
+      "character": "04_jinhyuk_worry.png"
+    },
+    {
+      "id": 43,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "상대 타자들 패턴이 바뀌었어요. 빠른 볼에 익숙해졌습니다.",
+      "character": "01_hyeonbin_worry.png"
+    },
+    {
+      "id": 44,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "지금이 기회라는 거죠? 좋아요! 몸으로라도 막아내겠습니다!",
+      "character": "05_siyun_smile.png",
+      "voice": "5_voice_wow3.mp3"
+    },
+    {
+      "id": 45,
+      "type": "dialogue",
+      "dialogue": "그러나 무리한 투구가 이어지고, 작은 실책들이 겹치며 점수 차가 더 벌어진다."
+    },
+    {
+      "id": 46,
+      "type": "dialogue",
+      "dialogue": "관중석의 함성은 이제 폭풍처럼 느껴지기 시작한다."
+    },
+    {
+      "id": 47,
+      "type": "choice",
+      "question": "어떻게 격려할까?",
+      "choices": [
+        {
+          "text": "작은 성과에도 의미가 있어.\n방금 안타, 방금 수비. 그걸 발판으로 삼자.",
+          "nextSceneId": null
+        },
+        {
+          "text": "지금 힘들다고 주저앉으면 진짜 끝이야.\n남은 순간, 전부 쏟아내야 해.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "코치님, 당연하죠!",
+      "character": "05_siyun_happy.png"
+    },
+    {
+      "id": 49,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "네. 저희 모두, 실망스러운 경기가 되지 않도록 달리겠습니다.",
+      "character": "01_hyeonbin_worry.png",
+      "voice": "1_voice_yes.mp3"
+    },
+    {
+      "id": 50,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "경기 후반 - 9:00 PM",
+      "character": "char_null.png",
+      "background": "Br_ground6.jpg",
+      "bgm": "chapter2-4.mp3"
+    },
+    {
+      "id": 51,
+      "type": "dialogue",
+      "dialogue": "점수는 이미 크게 뒤지고 있다.",
+      "background": "Br_ground6.jpg",
+      "sfx": "Running_01.mp3"
+    },
+    {
+      "id": 52,
+      "type": "dialogue",
+      "dialogue": "그러나 팀원들은 고개를 숙이지 않았다.\n마지막 이닝, 모두의 목소리가 모인다."
+    },
+    {
+      "id": 53,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "코치님! 전 아직 뛸 수 있어요! 마지막까지 포기 안 할 겁니다!",
+      "character": "05_siyun_worry.png",
+      "voice": "5_voice_tsk.mp3"
+    },
+    {
+      "id": 54,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "괜찮아... 이건 끝이 아니라 시작이야.",
+      "character": "04_jinhyuk_worry.png",
+      "voice": "4_voice_sigh2.mp3"
+    },
+    {
+      "id": 55,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "마지막까지, 진지한 마음으로 경기에 임하겠습니다. 반드시.",
+      "character": "01_hyeonbin_default.png"
+    },
+    {
+      "id": 56,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "마지막 공... 남은 힘 전부 던져보겠습니다.",
+      "character": "03_yeonwoo_worry.png"
+    },
+    {
+      "id": 57,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "솔직히 힘들어요~ 코치님도 그렇죠?",
+      "character": "02_yoon_worry.png"
+    },
+    {
+      "id": 58,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "그런데 여기서 고개 숙이면 엄청나게 후회할 것 같거든요.",
+      "character": "02_yoon_worry.png"
+    },
+    {
+      "id": 59,
+      "type": "dialogue",
+      "dialogue": "….결국 점수는 만회되지 않았다."
+    },
+    {
+      "id": 60,
+      "type": "dialogue",
+      "dialogue": "그러나 마지막까지 버텨낸 순간, 팀원들의 얼굴엔 후회 대신 묘한 빛이 남아 있었다."
+    },
+    {
+      "id": 61,
+      "type": "chapter_title",
+      "title": "Chapter 2 End",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 62,
+      "type": "next_chapter",
+      "fadeDuration": 300,
+      "nextChapter": 3
+    }
+  ]
+}

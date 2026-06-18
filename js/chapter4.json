@@ -1,0 +1,576 @@
+{
+  "scenes": [
+    {
+      "id": 1,
+      "type": "chapter_title",
+      "title": "Chapter 4: 화염",
+      "sceneSubtitle": "\"Play NOWZ\" 우리의 꿈꾸던 미래",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 2,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "캐비닛 룸 - 10:00 AM",
+      "character": "char_null.png",
+      "background": "Br_cabinet.jpg",
+      "bgm": "chapter4-1.mp3"
+    },
+    {
+      "id": 3,
+      "type": "scene_title",
+      "sceneSubtitle": "바깥에서 휘슬 소리가 울린다.",
+      "character": "char_null.png",
+      "background": "Br_cabinet.jpg",
+      "sfx": "whistle.mp3"
+    },
+    {
+      "id": 4,
+      "type": "scene_title",
+      "sceneSubtitle": "모두 어깨에 긴장감을 안고 서 있다.",
+      "character": "char_null.png"
+    },
+    {
+      "id": 5,
+      "type": "dialogue",
+      "dialogue": "좋아! 오늘부터는 매일이 마지막 경기라는 마음으로 한다."
+    },
+    {
+      "id": 6,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "마지막이 되면 어쩌죠?",
+      "character": "02_yoon_default.png",
+      "voice": "2_voice_no.mp3"
+    },
+    {
+      "id": 7,
+      "type": "dialogue",
+      "dialogue": "그래서 더 해야지. 후회하지 않으려면."
+    },
+    {
+      "id": 8,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "오늘부터... 훈련 루틴도 다시 짤 거고요.",
+      "character": "04_jinhyuk_default.png",
+      "voice": "4_voice_yes2.mp3"
+    },
+    {
+      "id": 9,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "전 외야 라인 조정하겠습니다.",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 10,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "내야는 소통 강화요!",
+      "character": "05_siyun_happy.png"
+    },
+    {
+      "id": 11,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "저는 누구보다 빠르게 던지겠습니다!",
+      "character": "03_yeonwoo_happy.png",
+      "voice": "3_voice_laugh2.mp3"
+    },
+    {
+      "id": 12,
+      "type": "choice",
+      "question": "어떻게 대답할까?",
+      "choices": [
+        {
+          "text": "그래, 하지만 가장 중요한 것은 서로를 믿는거야.",
+          "nextSceneId": null
+        },
+        {
+          "text": "좋다, 공 백 개를 던질 때까지 끝내지 않는다.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "훈련장 - 11:00 AM",
+      "character": "char_null.png",
+      "background": "Br_ground1.jpg"
+    },
+    {
+      "id": 14,
+      "type": "scene_title",
+      "sceneSubtitle": "런닝, 캐치, 송구, 타격.",
+      "character": "char_null.png",
+      "background": "Br_ground1.jpg",
+      "sfx": "Swish_2.mp3"
+    },
+    {
+      "id": 15,
+      "type": "scene_title",
+      "sceneSubtitle": "단조롭지만 누구도 불평하지 않는다.\n흙먼지와 땀, 휘슬 소리만이 이어진다.",
+      "character": "char_null.png",
+      "background": "Br_ground1.jpg"
+    },
+    {
+      "id": 16,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "형, 볼이 자꾸 위로 떠.",
+      "character": "04_jinhyuk_worry.png",
+      "background": "Br_ground1.jpg"
+    },
+    {
+      "id": 17,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "그래, 다시 해 볼게.",
+      "character": "03_yeonwoo_worry.png",
+      "voice": "2_voice_yes1.mp3"
+    },
+    {
+      "id": 18,
+      "type": "dialogue",
+      "dialogue": "공이 날아가고, 스트라이크 존을 깔끔히 통과한다."
+    },
+    {
+      "id": 19,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "좋아, 이제 공이 산다!",
+      "character": "04_jinhyuk_smile.png",
+      "voice": "1_voice_laugh2.mp3"
+    },
+    {
+      "id": 20,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "수비 라인 바로 잡았습니다!",
+      "character": "05_siyun_worry.png"
+    },
+    {
+      "id": 21,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "아, 이제야 감이 돌아왔어요!",
+      "character": "02_yoon_happy.png"
+    },
+    {
+      "id": 22,
+      "type": "dialogue",
+      "dialogue": "작은 성공들이 쌓이며 분위기가 변한다."
+    },
+    {
+      "id": 23,
+      "type": "dialogue",
+      "dialogue": "아이들의 표정도, 서서히 밝게 풀려가기 시작한다."
+    },
+    {
+      "id": 24,
+      "type": "narration_button",
+      "text": "휴식 시간, 벤치 그늘 아래.\n연우는 물병을 들고 땀을 닦는다.",
+      "buttonText": "연우와 대화한다."
+    },
+    {
+      "id": 25,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "코치님… 이게 마지막 기회라 생각하니까, 무섭네요.",
+      "character": "03_yeonwoo_worry.png",
+      "voice": "3_voice_sigh.mp3"
+    },
+    {
+      "id": 26,
+      "type": "choice",
+      "question": "어떻게 대답할까?",
+      "choices": [
+        {
+          "text": "던지고 나면, 그건 그냥 결과야. 최선만 다해라",
+          "nextSceneId": null
+        },
+        {
+          "text": "무서워도 괜찮아.\n무서운 건 진짜 던지기 전까지만 무섭지.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "그래도 또 실패하면…",
+      "character": "03_yeonwoo_worry.png",
+      "voice": "3_voice_thinking2.mp3"
+    },
+    {
+      "id": 28,
+      "type": "dialogue",
+      "dialogue": "그땐 내 책임이지. 넌 던지는 걸 멈추지 않으면 돼.\n실패는 네 몫이 아니라 내 몫이다."
+    },
+    {
+      "id": 29,
+      "type": "dialogue",
+      "dialogue": "연우의 손끝이 잠시 떨리다가, 이내 멈춘다.",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 30,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "네, 코치님. 최선을 다해보겠습니다!",
+      "character": "03_yeonwoo_happy.png",
+      "voice": "3_voice_yes1.mp3"
+    },
+    {
+      "id": 31,
+      "type": "dialogue",
+      "dialogue": "좋아. 그거면 충분해."
+    },
+    {
+      "id": 32,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "훈련장 (모의 경기) - 2:00 PM",
+      "character": "char_null.png",
+      "background": "Br_ground5.jpg",
+      "bgm": "chapter4-2.mp3"
+    },
+    {
+      "id": 33,
+      "type": "dialogue",
+      "dialogue": "짧은 연습 경기. 처음엔 어색했지만, 점점 눈빛이 살아난다.",
+      "background": "Br_ground5.jpg"
+    },
+    {
+      "id": 34,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "사인 확인. 슬라이더 갑니다.",
+      "character": "04_jinhyuk_worry.png",
+      "voice": "4_voice_yes1.mp3"
+    },
+    {
+      "id": 35,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "받았습니다.",
+      "character": "03_yeonwoo_worry.png"
+    },
+    {
+      "id": 36,
+      "type": "dialogue",
+      "dialogue": "공이 바람을 가르는 소리와 함께, 삼진!",
+      "sfx": "Swish_7.mp3"
+    },
+    {
+      "id": 37,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "좋았어!",
+      "character": "02_yoon_worry.png",
+      "voice": "2_voice_yes.mp3"
+    },
+    {
+      "id": 38,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "외야 커버 완벽합니다!",
+      "character": "01_hyeonbin_worry.png",
+      "voice": "1_voice_nice.mp3"
+    },
+    {
+      "id": 39,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "내야 라인도요, 깨끗해요!",
+      "character": "05_siyun_worry.png"
+    },
+    {
+      "id": 40,
+      "type": "dialogue",
+      "dialogue": "짧은 환호, 그러나 진짜 경기는 아직이다."
+    },
+    {
+      "id": 41,
+      "type": "choice",
+      "question": "어떻게 격려할까?",
+      "choices": [
+        {
+          "text": "좋아, 이 정도면 충분해. 너희는 이미 하나야!",
+          "nextSceneId": null
+        },
+        {
+          "text": "이걸로 만족하긴 일러. 한계는 스스로 만든다!",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "마지막 이닝: 공식 경기 클라이맥스 - 8:30 PM",
+      "character": "char_null.png",
+      "background": "Br_ground2.jpg"
+    },
+    {
+      "id": 43,
+      "type": "dialogue",
+      "dialogue": "저녁 햇살이 길게 운동장을 가른다.",
+      "background": "Br_ground2.jpg"
+    },
+    {
+      "id": 44,
+      "type": "dialogue",
+      "dialogue": "점수는 3:2, 마지막 이닝."
+    },
+    {
+      "id": 45,
+      "type": "dialogue",
+      "dialogue": "모두의 시선이 연우에게 집중된다."
+    },
+    {
+      "id": 46,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "한 타자만 더 막으면... 끝이야.",
+      "character": "04_jinhyuk_worry.png",
+      "voice": "4_voice_yes2.mp3"
+    },
+    {
+      "id": 47,
+      "type": "dialogue",
+      "dialogue": "연우, 준비됐니?"
+    },
+    {
+      "id": 48,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "네. 이번엔… 진짜 끝냅니다.",
+      "character": "03_yeonwoo_worry.png",
+      "voice": "3_voice_yes1.mp3"
+    },
+    {
+      "id": 49,
+      "type": "dialogue",
+      "dialogue": "첫 투구, 스트라이크.",
+      "sfx": "bat_hitting.mp3"
+    },
+    {
+      "id": 50,
+      "type": "dialogue",
+      "dialogue": "두 번째, 파울."
+    },
+    {
+      "id": 51,
+      "type": "dialogue",
+      "dialogue": "세 번째 공이 높게 뜬다, 타자가 강하게 휘두른다."
+    },
+    {
+      "id": 52,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "공이 맞았습니다!",
+      "character": "05_siyun_worry.png",
+      "sfx": "MP_BatClang.mp3"
+    },
+    {
+      "id": 53,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "외야로 날아갑니다!",
+      "character": "01_hyeonbin_worry.png"
+    },
+    {
+      "id": 54,
+      "type": "dialogue",
+      "dialogue": "공이 외야로 빠져나가고, 현빈이 몸을 날려 글러브를 뻗는다."
+    },
+    {
+      "id": 55,
+      "type": "dialogue",
+      "dialogue": "‘탁.’ ...포구 성공.",
+      "sfx": "slam.mp3, whistle.mp3"
+    },
+    {
+      "id": 56,
+      "type": "dialogue",
+      "dialogue": "아웃!"
+    },
+    {
+      "id": 57,
+      "type": "dialogue",
+      "dialogue": "경기 종료!"
+    },
+    {
+      "id": 58,
+      "type": "dialogue",
+      "dialogue": "순간, 모든 소음이 사라졌다가,"
+    },
+    {
+      "id": 59,
+      "type": "dialogue",
+      "dialogue": "폭발하듯 환호가 터진다.",
+      "sfx": "clapping.mp3",
+      "flashDuration": 1
+    },
+    {
+      "id": 60,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "우리가… 이겼어요! 드디어 이겼어요!",
+      "character": "02_yoon_happy.png",
+      "voice": "2_voice_wemadeit.mp3"
+    },
+    {
+      "id": 61,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "꿈 아니지?",
+      "character": "03_yeonwoo_worry.png",
+      "voice": "3_voice_wemadeit.mp3"
+    },
+    {
+      "id": 62,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "완벽했어요... 사인도 하나 안 틀렸고.",
+      "character": "04_jinhyuk_smile.png",
+      "voice": "4_voice_wemadeit.mp3"
+    },
+    {
+      "id": 63,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "이게 바로 팀워크죠!",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_laugh2.mp3"
+    },
+    {
+      "id": 64,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "이제 구단이 아무 말 못 할 거에요. 우리가 직접 보여줬잖아요!",
+      "character": "01_hyeonbin_happy.png",
+      "voice": "1_voice_wemadeit.mp3"
+    },
+    {
+      "id": 65,
+      "type": "narration_button",
+      "text": "나는 아이들에게 천천히 걸어간다.\n모두가 기쁨에 차 있음을 공기로도 느낄 수 있다.",
+      "buttonText": "잠시 숨을 고르고 말을 꺼낸다.",
+      "sfx": "walking-2025-08-2701.mp3"
+    },
+    {
+      "id": 66,
+      "type": "dialogue",
+      "dialogue": "잘했다. 이게 우리가 만든 첫 승이야."
+    },
+    {
+      "id": 67,
+      "type": "dialogue",
+      "dialogue": "하지만 더 중요한 건, 오늘 너희가 서로를 믿었다는 거야."
+    },
+    {
+      "id": 68,
+      "type": "dialogue",
+      "dialogue": "모두가 고개를 끄덕인다."
+    },
+    {
+      "id": 69,
+      "type": "dialogue",
+      "dialogue": "연우가 글러브를 벗고, 팀원들과 차례로 하이파이브 한다."
+    },
+    {
+      "id": 70,
+      "type": "choice",
+      "question": "어떻게 얘기할까?",
+      "choices": [
+        {
+          "text": "이 정도 팀워크면 1군도 문제 없어!\n어떻게 축하할까?",
+          "nextSceneId": null
+        },
+        {
+          "text": "오늘은 그냥 축하의 기쁨을 누려 볼까?",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "그럼 승리를 기념으로 치킨파티 어때요?!",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_chicken.mp3"
+    },
+    {
+      "id": 72,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "예~ 좋아요!",
+      "character": "02_yoon_happy.png",
+      "voice": "2_voice_yes1.mp3"
+    },
+    {
+      "id": 73,
+      "type": "narration_button",
+      "text": "즐거운 웃음소리가 공기를 메우고,\n모두가 운동장 쪽으로 발을 내딛는다.\n우리는 함께 꿈꾸고 함께 이뤄나간다.\n오늘의 승리로, 우리는 마침내 ‘시작선’에 섰다.",
+      "buttonText": "첫 승리, 진짜 시작은 지금부터다.",
+      "sfx": "Running_01.mp3"
+    },
+    {
+      "id": 74,
+      "type": "chapter_title",
+      "title": "Chapter 4 End",
+      "sceneSubtitle": "Play NOWZ, NEXT?",
+      "character": "char_null.png",
+      "background": "bg_gate.png",
+      "voice": "0_voice_teamwork.mp3"
+    },
+    {
+      "id": 75,
+      "type": "ending_choice",
+      "fadeDuration": 300,
+      "background": "Br_cabinet2.jpg",
+      "question": "경기를 승리로 이끄는 건 어떤 선수일까?",
+      "choices": [
+        {
+          "text": "계획적이고 부지런한 선수겠지.",
+          "nextSceneId": null,
+          "landingUrl": "./ending.html"
+        },
+        {
+          "text": "모두에게 다정한 선수 아닐까?",
+          "nextSceneId": null,
+          "landingUrl": "./ending.html"
+        },
+        {
+          "text": "선수라면 승부욕이 있어야지.",
+          "nextSceneId": null,
+          "landingUrl": "./ending.html"
+        },
+        {
+          "text": "눈치가 빠른 선수가 아무래도 좋지.",
+          "nextSceneId": null,
+          "landingUrl": "./ending.html"
+        },
+        {
+          "text": "건강한 선수가 최고야.",
+          "nextSceneId": null,
+          "landingUrl": "./ending.html"
+        },
+        {
+          "text": "역시··· 고를 수 없다.",
+          "nextSceneId": null,
+          "landingUrl": "./ending.html"
+        }
+      ]
+    }
+  ]
+}

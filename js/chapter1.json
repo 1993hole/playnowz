@@ -1,0 +1,632 @@
+{
+  "scenes": [
+    {
+      "id": 1,
+      "type": "chapter_title",
+      "title": "Chapter 1: 첫 만남",
+      "sceneSubtitle": "\"Play NOWZ\" 야구단의 신임 코치가 되다.",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 2,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "야구단 연습장 - 8:00 AM",
+      "character": "char_null.png",
+      "background": "bg_gate.png",
+      "bgm": "chapter1-1.mp3"
+    },
+    {
+      "id": 3,
+      "type": "narration_button",
+      "text": "오늘은 'Play NOWZ' 야구단\n 연습장에 첫 출근하는 날.\n나는 당당하게 이 야구단의 코치로 임명받았다.\n\n꽤 개성 있는 선수들이 많다는데,\n들어가 보니 넓은 실내 훈련장에는\n이미 한 명의 선수가 열심히 연습 중이다.",
+      "buttonText": "당신은 오늘부터 'Play NOWZ'\n야구단의 신임 코치입니다.",
+      "character": "char_null.png",
+      "background": "Br_cabinet2.jpg"
+    },
+    {
+      "id": 4,
+      "type": "scene_title",
+      "sceneSubtitle": "2군 선수들을 1군으로 승격시켜,\n정식 선수로 등록시키는 것이\n당신의 임무.",
+      "character": "char_null.png",
+      "background": "B_cloud.jpg"
+    },
+    {
+      "id": 5,
+      "type": "scene_title",
+      "sceneSubtitle": "하지만 이 녀석들,\n생각보다 만만치 않을 것 같은데요?",
+      "character": "char_null.png",
+      "background": "B_cloud.jpg"
+    },
+    {
+      "id": 6,
+      "type": "dialogue",
+      "dialogue": "그라운드에서 공을 던지며 열심히 움직이는 선수가 눈에 들어온다. 언뜻 봐도, 성실하고 자유분방한 느낌을 풍긴다.",
+      "background": "Br_training.jpg",
+      "bgm": "chapter1-2.mp3",
+      "sfx": "Open_door_1.mp3, MP_BallBounce.mp3"
+    },
+    {
+      "id": 7,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "어? 새로 오신 코치님이시구나! 안녕하세요!",
+      "character": "01_hyeonbin_happy.png",
+      "voice": "1_voice_hello.mp3"
+    },
+    {
+      "id": 8,
+      "type": "dialogue",
+      "dialogue": "미리 얼굴을 안내받아서 다행이다. 깔끔한 유니폼 차림의 현빈이 공손하게 인사한다.\n이른 아침부터 땀을 흘리고 있었던 모양이다.",
+      "character": "01_hyeonbin_happy.png",
+      "sfx": "cloth02.mp3"
+    },
+    {
+      "id": 9,
+      "type": "dialogue",
+      "dialogue": "야구 스티커가 붙은 글러브를 주섬주섬 벗고, 나와 눈을 맞춘다.",
+      "character": "01_hyeonbin_happy.png"
+    },
+    {
+      "id": 10,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "아, 저는 현빈이라고 합니다. 포지션은 외야수(중견수)예요.",
+      "character": "01_hyeonbin_default.png"
+    },
+    {
+      "id": 11,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "갑자기 인사해서 놀라셨죠?\n아침 일찍부터 연습하는 게 습관이거든요.\n계획적으로 움직이는 게 제 스타일이에요.",
+      "character": "01_hyeonbin_smile.png",
+      "voice": "1_voice_laugh2.mp3"
+    },
+    {
+      "id": 12,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "코치님도 아시다시피, 프로는 기본기부터 철저해야 하니까요!",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 13,
+      "type": "dialogue",
+      "dialogue": "현빈이 환하게 웃으며 손을 내민다.",
+      "character": "01_hyeonbin_happy.png",
+      "sfx": "swish_sound.mp3"
+    },
+    {
+      "id": 14,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "코치님. 혼자 연습하다 보면, 혼자만의 우주에 빠지게 돼요.",
+      "character": "01_hyeonbin_happy.png"
+    },
+    {
+      "id": 15,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "우주는 참 신기한 것 같지 않아요?\n공이 날아가는 궤적도 사실 우주의 법칙을 따르는 거잖아요.",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 16,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "어제 그 생각하다가 잠을 못 잤어요, 하하.",
+      "character": "01_hyeonbin_smile.png",
+      "voice": "1_voice_laugh1.mp3"
+    },
+    {
+      "id": 17,
+      "type": "choice",
+      "character": "01_hyeonbin_smile.png",
+      "question": "어떻게 반응할까?",
+      "choices": [
+        {
+          "text": "열정적이네요, 현빈 선수!",
+          "nextSceneId": null
+        },
+        {
+          "text": "우주요? ......갑자기요?",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "코치님에게는 꼭 말씀해 드리고 싶었어요.",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 19,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "우리가 같은 팀에서 만나 함께 나아가는 것도, 우주의 궤도 같다는 생각이 문득 들었거든요.",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 20,
+      "type": "dialogue",
+      "dialogue": "그 때, 문이 열리며 느긋한 걸음으로 윤이 들어온다.",
+      "background": "Br_door.jpg",
+      "sfx": "walk_1.mp3, MP_wooddoor.mp3"
+    },
+    {
+      "id": 21,
+      "type": "dialogue",
+      "dialogue": "머리는 약간 헝클어져 있고, 한 손에는 블루투스 헤드폰을 들고 있다."
+    },
+    {
+      "id": 22,
+      "type": "dialogue",
+      "dialogue": "옆구리에 끼고 온 컵라면에 자연스럽게 물을 붓고는, 라면을 익히기 시작한다."
+    },
+    {
+      "id": 23,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "어~ 코치님이시구나? 안녕하세요~",
+      "character": "02_yoon_happy.png"
+    },
+    {
+      "id": 24,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "저는 윤이에요. 타자 포지션입니다!",
+      "character": "02_yoon_happy.png",
+      "voice": "2_voice_hello.mp3"
+    },
+    {
+      "id": 25,
+      "type": "dialogue",
+      "dialogue": "윤이 애교 있는 말투로 인사하며 라면을 후루룩 먹는다.",
+      "character": "02_yoon_happy.png",
+      "sfx": "noodle.mp3, MP_Noodle.mp3"
+    },
+    {
+      "id": 26,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "아침부터 배고파서요. 라면 없으면 하루가 시작이 안 돼요, 진짜.",
+      "character": "02_yoon_smile.png"
+    },
+    {
+      "id": 27,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "근데 코치님, 짧고 굵게 설명해 주시는 편이죠?제가 확 집중하는 걸 잘 해서요. 긴 얘기 들으면 딴 생각하거든요, 헤헤.",
+      "character": "02_yoon_smile.png"
+    },
+    {
+      "id": 28,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "또 라면이야? 아침은 제대로 먹어야지.",
+      "character": "01_hyeonbin_default.png"
+    },
+    {
+      "id": 29,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "에이~ 형은 너무 계획적이잖아. 전 즉흥파라구요!",
+      "character": "02_yoon_smile.png",
+      "voice": "2_voice_laugh1.mp3"
+    },
+    {
+      "id": 30,
+      "type": "choice",
+      "character": "02_yoon_smile.png",
+      "question": "어떻게 반응할까?",
+      "choices": [
+        {
+          "text": "요점만 빠르게 **쳐낸다,** 좋은데?",
+          "nextSceneId": null
+        },
+        {
+          "text": "훈련 전에 라면은 좀. 건강도 챙겨야지!",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "type": "dialogue",
+      "dialogue": "내가 윤에게 한 마디 건네려는 순간, 또다시 문이 열린다.",
+      "sfx": "Open_door_2.mp3"
+    },
+    {
+      "id": 32,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "아, 새로운 코치님! 반갑습니다!",
+      "character": "03_yeonwoo_smile.png",
+      "voice": "3_voice_hello.mp3"
+    },
+    {
+      "id": 33,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "저는 연우입니다. 투수 포지션이에요.",
+      "character": "03_yeonwoo_happy.png",
+      "voice": "3_voice_laugh2.mp3"
+    },
+    {
+      "id": 34,
+      "type": "dialogue",
+      "dialogue": "연우가 정리된 가방을 들고 조용히 들어온다.\n손에는 투구 메모장과 아이싱팩.",
+      "sfx": "walk_1.mp3, MP_Rustle.mp3"
+    },
+    {
+      "id": 35,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "아, 코치님도 비타민 필요하세요? 건강이 기본이잖아요.",
+      "character": "03_yeonwoo_smile.png"
+    },
+    {
+      "id": 36,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "체력 관리 안 하면 경기에서 버틸 수가 없어요.\n투수는 특히 어깨랑 팔꿈치 관리 안 하면 바로 부상이거든요.",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 37,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "저는 매일 아이싱하고, 마사지볼로 근육 풀어주고, 건강식품도 챙겨 먹어요.",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 38,
+      "type": "dialogue",
+      "dialogue": "연우가 투구 메모장을 펼쳐 보이며 말한다.",
+      "character": "03_yeonwoo_default.png",
+      "sfx": "paper.mp3"
+    },
+    {
+      "id": 39,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "이건 제 투구 기록이에요.\n매일 어떤 공을 몇 개 던졌는지, 컨디션은 어땠는지 다 적어둬요.",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 40,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "계획적으로 해야 실력이 늘거든요.",
+      "character": "03_yeonwoo_smile.png",
+      "voice": "3_voice_laugh2.mp3"
+    },
+    {
+      "id": 41,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "와, 연우는 정말 철저해…",
+      "character": "01_hyeonbin_smile.png"
+    },
+    {
+      "id": 42,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "그래야죠! 근데 코치님, 건강 관리는…",
+      "character": "03_yeonwoo_smile.png"
+    },
+    {
+      "id": 43,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "'건'강하게 '관'리하는 거라서 '건관'!",
+      "character": "03_yeonwoo_happy.png",
+      "sfx": "bad_joke_drum.mp3"
+    },
+    {
+      "id": 44,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "......어때요? 재밌죠?",
+      "character": "03_yeonwoo_happy.png",
+      "voice": "3_voice_laugh1.mp3"
+    },
+    {
+      "id": 45,
+      "type": "choice",
+      "character": "03_yeonwoo_happy.png",
+      "question": "(아재 개그잖아.)",
+      "choices": [
+        {
+          "text": "하하하하! 연우 선수, 센스가 아주?",
+          "nextSceneId": null
+        },
+        {
+          "text": "(조용히 미소만)",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "아... 이 안은 왜 이렇게 썰렁해?",
+      "character": "04_jinhyuk_default.png",
+      "sfx": "Open_door_2.mp3"
+    },
+    {
+      "id": 47,
+      "type": "dialogue",
+      "dialogue": "천천히, 정말 천천히 문이 열리며 진혁이 들어온다.\n손에는 묵직한 포수 장비를 들고 있다.",
+      "character": "04_jinhyuk_default.png",
+      "sfx": "walking-2025-08-2701.mp3"
+    },
+    {
+      "id": 48,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "하아아암, 안녕하세요, 코치님...\n저는 진혁이라고... 합니다.",
+      "character": "04_jinhyuk_default.png",
+      "voice": "4_voice_hello.mp3"
+    },
+    {
+      "id": 49,
+      "type": "dialogue",
+      "dialogue": "말과 행동이 느릿느릿하지만, 날카로운 외모와 대비되는 맹한 표정.",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 50,
+      "type": "dialogue",
+      "dialogue": "인사를 마치는 데 한참이나 걸렸다.",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 51,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "포지션은 포수예요.",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 52,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "잘 부탁드려요......",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 53,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "오늘도 느리네~",
+      "character": "02_yoon_smile.png"
+    },
+    {
+      "id": 54,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "...그래도 실력은... 뒤처지지 않아요. 걱정 마세요…",
+      "character": "04_jinhyuk_smile.png",
+      "voice": "4_voice_yes2.mp3"
+    },
+    {
+      "id": 55,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "포수는 팀의 기둥이잖아요. 투수들 컨디션도 챙기고, 작전도 짜고… 저는 그런 역할이 잘 맞는 것 같아요.",
+      "character": "04_jinhyuk_smile.png"
+    },
+    {
+      "id": 56,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "진혁이는 항상 저렇게 느긋해 보여도 경기에선 달라요, 코치님.",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 57,
+      "type": "choice",
+      "character": "char_null.png",
+      "question": "어떻게 반응할까?",
+      "choices": [
+        {
+          "text": "천천히 해도 괜찮아요, 진혁 선수.\n신중함이 좋아 보여요.",
+          "nextSceneId": null
+        },
+        {
+          "text": "느긋해도 상관 없어요. 우선, 실력이 중요하죠.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "type": "dialogue",
+      "dialogue": "그렇게 대답해 주면, 진혁이 내 말에 가만히 웃는다.",
+      "character": "04_jinhyuk_smile.png"
+    },
+    {
+      "id": 59,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "상대 타자들도 꼼꼼히 분석해 두죠. 미리 준비해두면 경기에서 당황하지 않거든요.",
+      "character": "04_jinhyuk_smile.png",
+      "voice": "4_voice_laugh3.mp3"
+    },
+    {
+      "id": 60,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "저는... 신중하게 생각하는 편이에요.",
+      "character": "04_jinhyuk_smile.png"
+    },
+    {
+      "id": 61,
+      "type": "dialogue",
+      "dialogue": "마지막으로 문이 활짝 열리며 시윤이 에너지 넘치게 뛰어 들어온다.",
+      "sfx": "Open_door_3.mp3"
+    },
+    {
+      "id": 62,
+      "type": "dialogue",
+      "dialogue": "품에는 운동 물품을 한가득 들고 들어온다.",
+      "sfx": "cloth02.mp3"
+    },
+    {
+      "id": 63,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "코치님! 안녕하세요!",
+      "character": "05_siyun_happy.png"
+    },
+    {
+      "id": 64,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "저 시윤이에요. 내야수(1루수) 맡고 있습니다!",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_hello.mp3"
+    },
+    {
+      "id": 65,
+      "type": "dialogue",
+      "dialogue": "시윤이 밝게 웃으며 악수를 청한다.",
+      "character": "05_siyun_happy.png"
+    },
+    {
+      "id": 66,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "저 운동 진짜 좋아해요! 웨이트도 하고, 런닝도 하고. 자기관리 철저하게 하는 편이에요. 훈련도 빡세게 해주세요! 완전 터프하게!",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_laugh1.mp3"
+    },
+    {
+      "id": 67,
+      "type": "dialogue",
+      "dialogue": "그런데 갑자기 치킨 박스를 꺼내 보이며…",
+      "character": "05_siyun_happy.png",
+      "sfx": "vinyl.mp3, Opening_Small_Cardboard_Box.mp3"
+    },
+    {
+      "id": 68,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "......근데 치킨은 참을 수가 없어요, 헤헤.",
+      "character": "05_siyun_smile.png"
+    },
+    {
+      "id": 69,
+      "type": "dialogue",
+      "dialogue": "갑자기 애교를 부리는 걸 보자하니...",
+      "character": "05_siyun_smile.png"
+    },
+    {
+      "id": 70,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "시윤아, 자기관리 한다며?",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 71,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "운동 열심히 하면 되죠 뭐! 헤헤!",
+      "character": "05_siyun_happy.png",
+      "voice": "5_voice_laugh1.mp3"
+    },
+    {
+      "id": 72,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "시윤이가 제일 밸런스 좋아, 운동도 하고 놀기도 하고!",
+      "character": "01_hyeonbin_happy.png",
+      "voice": "1_voice_yes.mp3"
+    },
+    {
+      "id": 73,
+      "type": "choice",
+      "question": "어떻게 반응할까?",
+      "choices": [
+        {
+          "text": "치킨이 맛있긴 하죠. 운동도, 먹는 것도.\n균형 잡힌 스타일이네요!",
+          "nextSceneId": null
+        },
+        {
+          "text": "분명 어제도 먹었죠?\n아무리 맛있어도 치킨은 적당히!",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "type": "narration_button",
+      "text": "다섯 멤버가 모두 모였다.\n각자의 개성이 뚜렷한 팀원들이\n당신을 믿고 있다.",
+      "buttonText": "모두를 바라본다.",
+      "background": "Br_training3.jpg",
+      "bgm": "chapter1-3.mp3",
+      "whiteFlash": true
+    },
+    {
+      "id": 75,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "자, 이제 코치님과 함께 본격적으로 1군 승급을 목표로 달려볼까요?",
+      "character": "01_hyeonbin_happy.png"
+    },
+    {
+      "id": 76,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "저야 당연히 자신 있죠! 기대하세요!",
+      "character": "02_yoon_happy.png"
+    },
+    {
+      "id": 77,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "열심히 하겠습니다, 코치님.",
+      "character": "03_yeonwoo_happy.png"
+    },
+    {
+      "id": 78,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "잘 부탁드려요......",
+      "character": "04_jinhyuk_happy.png"
+    },
+    {
+      "id": 79,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "코치님, 저희 꼭 위로 올려주세요!",
+      "character": "05_siyun_happy.png"
+    },
+    {
+      "id": 80,
+      "type": "narration_button",
+      "text": "이렇게 당신의\n'Play NOWZ' 코칭이 시작되었다.\n\n과연 이들을 1군으로 승급시킬 수 있을까?",
+      "buttonText": "그건, 당신의 선택에 달렸다!"
+    },
+    {
+      "id": 81,
+      "type": "chapter_title",
+      "title": "Chapter 1 End",
+      "sceneSubtitle": "다음 챕터에서 본격적인 경기가 시작됩니다!",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 82,
+      "type": "next_chapter",
+      "fadeDuration": 300,
+      "nextChapter": 2
+    }
+  ]
+}

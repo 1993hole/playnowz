@@ -1,0 +1,275 @@
+/* Canvas 파티클 배경 */
+#particlesCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10; /* 배경 이미지 위, 로고 아래 */
+  opacity: 0.6;
+}
+
+/* 사운드 on/off 버튼 (intro 페이지 전용 - 좌측 상단) */
+#page-intro .sound-toggle {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: max(16px, env(safe-area-inset-left));
+  z-index: 20;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#page-intro .sound-toggle:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+#page-intro .sound-toggle:active {
+  transform: scale(0.95);
+}
+#page-intro .sound-toggle img {
+  display: block;
+  width: clamp(36px, 5vw, 48px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+@media (max-width: 768px) {
+  #page-intro .sound-toggle img { 
+    width: clamp(32px, 6vw, 40px); 
+  }
+}
+
+/* 기존 intro 스타일 */
+.intro-screen {
+  min-height: 100svh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: clamp(16px, 3vh, 32px);
+  padding: clamp(16px, 4vw, 48px);
+  background-image: url('../assets/bg/B_title.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.logo {
+  width: clamp(240px, 40vw, 540px);
+  height: auto;
+  z-index: 20; /* Canvas보다 위 */
+  position: relative;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .35));
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: pointer;
+  
+  /* 하단 페이드인 애니메이션 - Safari/iOS 호환성 개선 */
+  -webkit-animation: logoFadeInUp 1.5s ease-out 0.3s both;
+  animation: logoFadeInUp 1.5s ease-out 0.3s both;
+  
+  /* iOS Safari를 위한 초기 상태 명시 */
+  opacity: 0;
+  transform: translateY(60px);
+  -webkit-transform: translateY(60px);
+  
+  /* GPU 가속 활성화 */
+  will-change: opacity, transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* 클릭 효과를 위한 transition */
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* ✨ 로고 페이드인 완료 후 둥둥 떠다니는 애니메이션 */
+.logo.animation-complete {
+  -webkit-animation: logoFloat 3s ease-in-out infinite;
+  animation: logoFloat 3s ease-in-out infinite;
+  /* ✨ 페이드인 완료 후 opacity 유지 (사라지지 않도록) */
+  opacity: 1 !important;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* ✨ 로고 클릭 효과 */
+.logo:active {
+  transform: scale(0.95) !important;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, .4)) !important;
+  transition: transform 0.1s ease, filter 0.1s ease !important;
+}
+
+/* ✨ 로고 호버 효과 (PC) */
+.logo:hover {
+  transform: scale(1.03);
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, .45));
+}
+
+/* ✨ 로고 클릭 애니메이션 클래스 (JS에서 추가) */
+.logo.clicking {
+  animation: logoClick 0.4s ease;
+}
+
+@keyframes logoClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ✨ 빛이 지나가는 효과 - JS로 추가되는 요소 */
+.logo-shine-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  
+  /* 애니메이션 지연 후 반복 */
+  animation: logoShine 4s ease-in-out 2.5s infinite;
+}
+
+/* 빛 지나가는 애니메이션 */
+@keyframes logoShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+/* 로고 페이드인 키프레임 - webkit prefix 추가 */
+@-webkit-keyframes logoFadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(60px);
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoFadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(60px);
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+/* ✨ 둥둥 떠다니는 애니메이션 - webkit prefix 추가 */
+@-webkit-keyframes logoFloat {
+  0%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+@media (max-width: 1024px) { 
+  .logo { 
+    width: clamp(260px, 55vw, 620px); 
+  } 
+}
+
+@media (max-width: 768px) { 
+  .logo { 
+    width: clamp(220px, 75vw, 640px); 
+  }
+}
+
+/* .cta: "화면을 터치해주세요" 버튼 */
+.cta {
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+
+  /* 기존 스타일 */
+  z-index: 20; /* Canvas보다 위 */
+  position: relative;
+  background: rgba(255, 255, 255, .62);
+  padding: clamp(10px, 1.2vh, 12px) clamp(16px, 2vw, 20px);
+  border-radius: 999px;
+  font-size: clamp(14px, 2.2vw, 18px);
+  color: #000;
+  line-height: 1.1;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(2px);
+  transition: all .2s ease;
+  
+  /* 깜빡임 애니메이션 */
+  animation: blink 2.5s ease-in-out infinite;
+}
+
+/* 깜빡임 키프레임 */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* 호버 효과 */
+.cta:hover {
+  background: rgba(255, 255, 255, .8);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+  animation: none; /* 호버 시 깜빡임 중지 */
+}
+
+/* 클릭 효과 */
+.cta:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+}
+
+/* 포커스 시에도 커스텀 포커스 링만 보이도록 설정 */
+.cta:focus-visible {
+  outline: 3px solid var(--brand-red);
+  outline-offset: 3px;
+  animation: none; /* 포커스 시 깜빡임 중지 */
+}

@@ -1,0 +1,396 @@
+{
+  "scenes": [
+    {
+      "id": 1,
+      "type": "chapter_title",
+      "title": "Chapter 3: 불씨와 의문",
+      "sceneSubtitle": "\"Play NOWZ\" 그래도 나아가는 거야",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 2,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "경기 종료 후 - 10:00 PM",
+      "character": "char_null.png",
+      "background": "Br_ground6.jpg",
+      "bgm": "chapter3-1.mp3"
+    },
+    {
+      "id": 3,
+      "type": "dialogue",
+      "dialogue": "경기가 끝난 뒤, 무거운 벤치 분위기를 뒤로 하고 팀원들은 하나씩 돌아가기 시작한다.",
+      "background": "Br_ground6.jpg",
+      "sfx": "walk_1.mp3"
+    },
+    {
+      "id": 4,
+      "type": "dialogue",
+      "dialogue": "계속되는 패배에 아이들이 점점 의욕을 잃어가는 것이 보인다."
+    },
+    {
+      "id": 5,
+      "type": "narration_button",
+      "text": "나는 대체 어떻게 해야 할까…",
+      "buttonText": "합숙소로 아이들을 배웅하러 간다."
+    },
+    {
+      "id": 6,
+      "type": "dialogue",
+      "dialogue": "훈련을 마치고 합숙소 문을 열자, 복도 벽에 낯선 종이가 붙어 있다.",
+      "background": "Br_room.jpg",
+      "sfx": "Open_door_2.mp3, walking-2025-08-2701.mp3"
+    },
+    {
+      "id": 7,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "이건... 구단에서 보낸 건가?",
+      "character": "02_yoon_nervous.png",
+      "background": "Br_room.jpg",
+      "voice": "2_voice_thinking1.mp3"
+    },
+    {
+      "id": 8,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "공고 같은데. 읽어 보자.",
+      "character": "01_hyeonbin_worry.png",
+      "background": "Br_room.jpg",
+      "voice": "1_voice_thinking2.mp3"
+    },
+    {
+      "id": 9,
+      "type": "narration_button",
+      "text": "◈구단 운영 공지◈\n\n최근 2군 팀의 경기 성적이\n지속적으로 부진함에 따라,\n본사는 해당 팀의 향후 운영에 대해\n아래와 같이 방침을 전달한다.",
+      "buttonText": "계속 읽기",
+      "background": "Br_room2.jpg"
+    },
+    {
+      "id": 10,
+      "type": "narration_button",
+      "text": "※성과 조건\n이번 시즌 종료 전까지\n최소 1승 이상을 기록하지 못할 경우,\n2군 팀은 해체 절차에 들어간다.\n해체 시, 현재 배정된\n예산 및 훈련 시설 사용권은 모두 회수된다.",
+      "buttonText": "계속 읽기"
+    },
+    {
+      "id": 11,
+      "type": "narration_button",
+      "text": "※평가 기준\n경기 결과 뿐 아니라,\n태도 및 훈련 보고서 또한\n최종 검토 자료에 포함된다.\n경기 중 반복되는 기초적 실수는\n\"의지 부족\"으로 간주될 수 있다.",
+      "buttonText": "계속 읽기"
+    },
+    {
+      "id": 12,
+      "type": "narration_button",
+      "text": "※향후 일정\n잔여 시즌 동안 본사 감독관이\n불시 방문 및 점검을 실시할 예정이다.\n최종 결과는 시즌 종료일로부터\n1주일 내 공표된다.",
+      "buttonText": "계속 읽기"
+    },
+    {
+      "id": 13,
+      "type": "narration_button",
+      "text": "본사는 2군팀이 충분히\n경쟁력을 발휘할 수 있음을 기대하였으나,\n최근 상황은 지속 가능성에\n심각한 의문을 제기하고 있다.",
+      "buttonText": "계속 읽기"
+    },
+    {
+      "id": 14,
+      "type": "narration_button",
+      "text": "이에 따라 이번 방침은 철회 불가능하며,\n성과로 증명하지 못할 경우\n더 이상 예외는 없다.\n\n야구단 운영위원회",
+      "buttonText": "확인 후 다음으로"
+    },
+    {
+      "id": 15,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "구단이 저렇게 못 박아 버리면…",
+      "character": "05_siyun_nervous.png",
+      "background": "Br_room.jpg",
+      "voice": "5_voice_tsk.mp3"
+    },
+    {
+      "id": 16,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "이제, 정말 끝날지도 모른다는 거네요.",
+      "character": "04_jinhyuk_default.png",
+      "voice": "4_voice_sigh2.mp3"
+    },
+    {
+      "id": 17,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "난 아직 더 던지고 싶어! 이렇게 끝내고 싶지 않아.",
+      "character": "03_yeonwoo_default.png",
+      "voice": "3_voice_refuse.mp3"
+    },
+    {
+      "id": 18,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "어쨌든, 결과가 필요하다는 말이지. 보여주지 않으면 안 돼.",
+      "character": "01_hyeonbin_default.png",
+      "voice": "1_voice_tsk.mp3"
+    },
+    {
+      "id": 19,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "자자, 다들 왜 이렇게 쳐져 있어? 열심히 하면 될 거야!",
+      "character": "02_yoon_smile.png",
+      "voice": "2_voice_laugh1.mp3"
+    },
+    {
+      "id": 20,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "......",
+      "character": "02_yoon_default.png"
+    },
+    {
+      "id": 21,
+      "type": "scene_title",
+      "title": "SCENE",
+      "sceneSubtitle": "훈련장 - 7:10 AM",
+      "character": "char_null.png",
+      "background": "Br_training.jpg",
+      "sfx": "walk_2.mp3, wind01.mp3"
+    },
+    {
+      "id": 22,
+      "type": "dialogue",
+      "dialogue": "아침 공기가 차갑게 맴도는 훈련장. 아이들은 무거운 발걸음으로 하나 둘 모인다."
+    },
+    {
+      "id": 23,
+      "type": "dialogue",
+      "dialogue": "모두의 눈빛에는 두려움과 불안이 짙게 깔려 있다."
+    },
+    {
+      "id": 24,
+      "type": "dialogue",
+      "dialogue": "나는 아이들을 바라보다가, 휘슬을 길게 불었다.",
+      "sfx": "whistle.mp3"
+    },
+    {
+      "id": 25,
+      "type": "choice",
+      "question": "나는 아이들을 바라보다가, 휘슬을 길게 불었다.",
+      "choices": [
+        {
+          "text": "다들 정신 차려, 오늘은 그저 매일 하듯이\n훈련만 하는 날이 아니야.",
+          "nextSceneId": null
+        },
+        {
+          "text": "아직 끝난 건 아니야. 결과로 보여주자.",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "type": "dialogue",
+      "dialogue": "냉정하게 말하자면, 구단은 우릴 버릴 준비가 돼 있어.\n이번 시즌 끝날 때까지 이기지 못하면,"
+    },
+    {
+      "id": 27,
+      "type": "dialogue",
+      "dialogue": "......"
+    },
+    {
+      "id": 28,
+      "type": "dialogue",
+      "dialogue": "어제 공고에 봤듯이 알겠지."
+    },
+    {
+      "id": 29,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "그럼 이제 뭘 어떻게 해야 해요?",
+      "character": "02_yoon_default.png"
+    },
+    {
+      "id": 30,
+      "type": "dialogue",
+      "dialogue": "단순해, 이기면 된다.",
+      "sfx": "MP_BadOmen2.mp3"
+    },
+    {
+      "id": 31,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "그렇지만, 어떻게......",
+      "character": "01_hyeonbin_worry.png",
+      "voice": "1_voice_thinking1.mp3"
+    },
+    {
+      "id": 32,
+      "type": "choice",
+      "question": "어떻게 대답할까?",
+      "choices": [
+        {
+          "text": "패배를 두려워 하지 마.\n지금 너희의 그 태도는 이미 패배한 자들의 모습이야!",
+          "nextSceneId": null
+        },
+        {
+          "text": "이길 수 있다고 믿는 순간, 이미 반은 이긴 거야!",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "type": "dialogue",
+      "dialogue": "하지만, 또 지게 된다면......"
+    },
+    {
+      "id": 34,
+      "type": "dialogue",
+      "dialogue": "그땐 내 책임이다. 너희가 아니라.",
+      "bgm": "chapter3-2.mp3"
+    },
+    {
+      "id": 35,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "…..!",
+      "character": "01_hyeonbin_default.png",
+      "whiteFlash": true
+    },
+    {
+      "id": 36,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "…..!",
+      "character": "02_yoon_default.png"
+    },
+    {
+      "id": 37,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "…..!",
+      "character": "03_yeonwoo_default.png"
+    },
+    {
+      "id": 38,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "…..!",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 39,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "…..!",
+      "character": "05_siyun_default.png"
+    },
+    {
+      "id": 40,
+      "type": "dialogue",
+      "dialogue": "난 코치로서 여기에 섰다. 실패의 무게는 내가 짊어진다."
+    },
+    {
+      "id": 41,
+      "type": "dialogue",
+      "dialogue": "너희는 단 하나, 야구에만 집중해! ",
+      "sfx": "Swish_5.mp3"
+    },
+    {
+      "id": 42,
+      "type": "dialogue",
+      "dialogue": "오로지 그렇게만 해 주면 돼. 그게 너희가 보일 태도야."
+    },
+    {
+      "id": 43,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "코치님…",
+      "character": "04_jinhyuk_default.png"
+    },
+    {
+      "id": 44,
+      "type": "dialogue",
+      "dialogue": "진혁은 무언가 할 말이 있는 듯 오래 고민하다가, 천천히 입을 연다."
+    },
+    {
+      "id": 45,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "감사합니다…",
+      "character": "04_jinhyuk_smile.png"
+    },
+    {
+      "id": 46,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "전, 아직 끝내고 싶지 않아요.",
+      "character": "04_jinhyuk_happy.png",
+      "voice": "4_voice_laugh2.mp3"
+    },
+    {
+      "id": 47,
+      "type": "dialogue",
+      "speaker": "진혁",
+      "dialogue": "이 팀이 사라지는 걸... 가만히 보고 있을 수 없어요.",
+      "character": "04_jinhyuk_smile.png"
+    },
+    {
+      "id": 48,
+      "type": "dialogue",
+      "speaker": "현빈",
+      "dialogue": "맞아. 어차피 여기까지 온 거, 후회 없이 해보자.",
+      "character": "01_hyeonbin_smile.png",
+      "voice": "1_voice_yes.mp3"
+    },
+    {
+      "id": 49,
+      "type": "dialogue",
+      "speaker": "연우",
+      "dialogue": "나도...! 마지막까지 필사적으로 던져볼게요.",
+      "character": "03_yeonwoo_smile.png",
+      "voice": "3_voice_yes1.mp3"
+    },
+    {
+      "id": 50,
+      "type": "dialogue",
+      "speaker": "시윤",
+      "dialogue": "저도 죽이 되든 밥이 되든, 어떻게든 해봐야겠어요.",
+      "character": "05_siyun_default.png"
+    },
+    {
+      "id": 51,
+      "type": "dialogue",
+      "speaker": "윤",
+      "dialogue": "그럼, 정해졌네! 이제 열심히 하는 수밖에 없겠어.",
+      "character": "02_yoon_happy.png",
+      "voice": "2_voice_laugh2.mp3"
+    },
+    {
+      "id": 52,
+      "type": "choice",
+      "question": "어떻게 대답할까?",
+      "choices": [
+        {
+          "text": "좋아, 그럼 시작하자.",
+          "nextSceneId": null
+        },
+        {
+          "text": "이제는, 정말 앞만 보고 가는 거야!",
+          "nextSceneId": null
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "type": "chapter_title",
+      "title": "Chapter 3 End",
+      "character": "char_null.png",
+      "background": "bg_gate.png"
+    },
+    {
+      "id": 54,
+      "type": "next_chapter",
+      "fadeDuration": 300,
+      "nextChapter": 4
+    }
+  ]
+}

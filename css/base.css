@@ -1,0 +1,13 @@
+:root{ --brand-red:#c31808; --text:#111; }
+*{ box-sizing:border-box }
+html,body{ height:100% }
+html{ scroll-behavior:smooth }
+body{
+  margin:0;
+  font-family:Pretendard, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  color:var(--text);
+  background:#000;
+  overflow:hidden; /* 전체 앱 스크롤 잠금 */
+}
+.view{ display:none; }
+.view.is-active{ display:block; }

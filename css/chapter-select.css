@@ -1,0 +1,290 @@
+.view-chapters{
+  min-height:100svh;
+  background-image: url('../assets/bg/B_title.jpg');
+  background-size: cover;
+  background-position: center;
+  position:relative;
+  overflow:hidden;
+}
+.view-chapters::after{
+  content:''; position:fixed; inset:0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 100%);
+  pointer-events:none;
+}
+
+.back-btn{
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 2;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.back-btn:hover{
+  opacity: .8;
+  transform: scale(1.05);
+}
+.back-btn:active{
+  transform: scale(0.95);
+}
+.back-btn img{
+  display: block;
+  width: clamp(36px, 5vw, 48px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+@media (max-width: 768px){
+  .back-btn img{ width: clamp(32px, 6vw, 40px); }
+}
+
+
+/* 사운드 on/off 버튼 (chapter-select 페이지 전용 - 좌측 상단) */
+#page-chapter-select .sound-toggle {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: max(16px, env(safe-area-inset-left));
+  z-index: 2;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#page-chapter-select .sound-toggle:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+#page-chapter-select .sound-toggle:active {
+  transform: scale(0.95);
+}
+#page-chapter-select .sound-toggle img {
+  display: block;
+  width: clamp(36px, 5vw, 48px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+@media (max-width: 768px) {
+  #page-chapter-select .sound-toggle img { 
+    width: clamp(32px, 6vw, 40px); 
+  }
+}
+
+/* PC: 그리드 레이아웃 */
+.tickets{
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center; align-content: center; justify-items: center;
+  height: 100svh;
+  padding: clamp(8px, 1.5vw, 20px);
+  gap: clamp(4px, 1vw, 12px);
+  overflow: hidden;
+}
+
+.ticket{
+  background:transparent; 
+  width: clamp(190px, 14vw, 280px);
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.ticket:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+.ticket:hover picture,
+.ticket:hover img {
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.4));
+}
+.ticket:active {
+  transform: translateY(-2px) scale(1.02);
+}
+.ticket picture, .ticket img{ 
+  display:block; 
+  width:100%; 
+  height:auto;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+  transition: filter .25s ease;
+}
+.ticket:focus,
+.ticket:focus-visible {
+  outline: none;
+}
+
+/* 태블릿/모바일: 스와이프 슬라이드 */
+@media (max-width: 1024px){
+  .tickets{ 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100svh;
+    padding: 0;
+    gap: clamp(16px, 3vw, 24px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* iOS 중앙정렬을 위한 padding */
+    padding-left: calc(50vw - clamp(90px, 22.5vw, 130px));
+    padding-right: calc(50vw - clamp(90px, 22.5vw, 130px));
+  }
+  .tickets::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .ticket{ 
+    flex-shrink: 0;
+    width: clamp(180px, 45vw, 260px);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    /* 비활성 티켓은 작고 투명하게 */
+    opacity: 0.5;
+    transform: scale(0.85);
+    transition: all 0.4s ease;
+    /* 비활성 티켓은 클릭 불가 */
+    pointer-events: none;
+  }
+  
+  /* 중앙(활성) 티켓 강조 */
+  .ticket.active {
+    opacity: 1;
+    transform: scale(1);
+    /* 활성 티켓만 클릭 가능 */
+    pointer-events: auto;
+  }
+  
+  /* 모바일/태블릿 티켓 클릭 애니메이션 */
+  .ticket:active {
+    transform: scale(0.75) !important;
+    transition: transform 0.1s ease !important;
+  }
+  
+  .ticket.active:active {
+    transform: scale(0.92) !important;
+    transition: transform 0.1s ease !important;
+  }
+  
+  /* 클릭 애니메이션 클래스 */
+  .ticket.clicked {
+    animation: mobileTicketClick 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .ticket.active.clicked {
+    animation: mobileTicketClickActive 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  @keyframes mobileTicketClick {
+    0% { transform: scale(0.85); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(0.85); }
+  }
+  
+  @keyframes mobileTicketClickActive {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  /* 화살표 버튼 */
+  .carousel-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    outline: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    transition: all .2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,.3);
+  }
+  
+  .carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  .carousel-arrow--prev {
+    left: max(16px, env(safe-area-inset-left));
+  }
+  
+  .carousel-arrow--next {
+    right: max(16px, env(safe-area-inset-right));
+  }
+  
+  .carousel-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 768px){
+  .tickets {
+    /* iOS 중앙정렬을 위한 padding */
+    padding-left: calc(50vw - clamp(80px, 25vw, 110px));
+    padding-right: calc(50vw - clamp(80px, 25vw, 110px));
+  }
+  
+  .ticket{ 
+    width: clamp(160px, 50vw, 220px);
+  }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .carousel-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 480px){
+  .tickets{ 
+    padding-top: clamp(20px, 4vh, 32px);
+    padding-bottom: clamp(20px, 4vh, 32px);
+  }
+  .ticket{ 
+    width: clamp(140px, 40vw, 180px);
+  }
+}
+
+/* PC에서는 화살표 숨김 */
+@media (min-width: 1025px){
+  .carousel-arrow {
+    display: none;
+  }
+}

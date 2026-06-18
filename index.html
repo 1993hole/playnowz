@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.ico">
+  <title>PLAY NOWZ</title>
+
+  
+  <!-- 폰트 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  
+  <!-- CSS 파일들 -->
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/intro.css">
+  <link rel="stylesheet" href="./css/chapter-select.css">
+  <link rel="stylesheet" href="./css/dialogue.css">
+  <link rel="stylesheet" href="./css/ending-full-styles.css">
+  
+  <style>
+    /* 페이지 전환을 위한 기본 스타일 */
+    .page {
+      width: 100%;
+      min-height: 100vh;
+    }
+    
+    /* 화이트 디졸브 전환 레이어 */
+    .transition-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+    
+    .transition-overlay.active {
+      opacity: 1;
+    }
+    
+    /* iOS Safari 이미지 컨텍스트 메뉴 방지 */
+    .ticket img {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+    
+    /* 티켓 버튼 자체는 클릭 가능하도록 */
+    .ticket {
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- 화이트 디졸브 전환 레이어 -->
+  <div class="transition-overlay" id="transitionOverlay"></div>
+
+  <!-- ==================== Page 1: Intro ==================== -->
+  <section id="page-intro" class="page" style="display:block;">
+    <!-- Canvas 파티클 배경 (intro 전용) -->
+    <canvas id="particlesCanvas"></canvas>
+    
+    <div class="view view-intro is-active" aria-label="인트로 화면">
+      <!-- 사운드 on/off 버튼 -->
+      <button class="sound-toggle" aria-label="사운드 켜기/끄기">
+        <img src="./assets/svg/sound-on.svg" alt="사운드 켜짐" class="sound-icon sound-on">
+        <img src="./assets/svg/sound-off.svg" alt="사운드 꺼짐" class="sound-icon sound-off" style="display:none;">
+      </button>
+
+      <main class="screen intro-screen">
+        <img class="logo" src="./assets/svg/logo_nowz.svg" alt="PLAY NOWZ 로고">
+        <button class="cta" id="touchCta" aria-label="화면을 터치해주세요">화면을 터치해주세요</button>
+      </main>
+    </div>
+  </section>
+
+  <!-- ==================== Page 2: Chapter Select ==================== -->
+  <section id="page-chapter-select" class="page" style="display:none;">
+    <div class="view view-chapters is-active" aria-label="챕터 선택">
+      <button class="back-btn" id="btnBackToIntro" aria-label="뒤로 가기">
+        <img src="./assets/svg/chapter-select-btn.svg" alt="">
+      </button>
+      
+      <!-- 사운드 on/off 버튼 -->
+      <button class="sound-toggle" aria-label="사운드 켜기/끄기">
+        <img src="./assets/svg/sound-on.svg" alt="사운드 켜짐" class="sound-icon sound-on">
+        <img src="./assets/svg/sound-off.svg" alt="사운드 꺼짐" class="sound-icon sound-off" style="display:none;">
+      </button>
+
+      <main class="tickets" aria-label="챕터 선택">
+        <button class="ticket" data-ch="1" aria-label="챕터 1">
+          <img src="./assets/svg/ticket_vertical_ch1.svg" alt="CHAPTER 1">
+        </button>
+        <button class="ticket" data-ch="2" aria-label="챕터 2">
+          <img src="./assets/svg/ticket_vertical_ch2.svg" alt="CHAPTER 2">
+        </button>
+        <button class="ticket" data-ch="3" aria-label="챕터 3">
+          <img src="./assets/svg/ticket_vertical_ch3.svg" alt="CHAPTER 3">
+        </button>
+        <button class="ticket" data-ch="4" aria-label="챕터 4">
+          <img src="./assets/svg/ticket_vertical_ch4.svg" alt="CHAPTER 4">
+        </button>
+      </main>
+
+      <!-- 태블릿/모바일용 화살표 버튼 -->
+      <button class="carousel-arrow carousel-arrow--prev" id="prevBtn" aria-label="이전 챕터">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="carousel-arrow carousel-arrow--next" id="nextBtn" aria-label="다음 챕터">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== Page 3: Dialogue ==================== -->
+  <section id="page-dialogue" class="page" style="display:none;">
+    <div class="view view-dialogue is-active" aria-label="대화 화면">
+      
+      <!-- 1) 우측 상단: 챕터 선택으로 돌아가기 버튼 -->
+      <button class="chapter-select-btn" id="btnToChapterSelect" aria-label="챕터 선택으로">
+        <img src="./assets/svg/chapter-select-btn.svg" alt="">
+      </button>
+
+      <!-- 사운드 on/off 버튼 (좌측 상단) -->
+      <button class="sound-toggle" aria-label="사운드 켜기/끄기">
+        <img src="./assets/svg/sound-on.svg" alt="사운드 켜짐" class="sound-icon sound-on">
+        <img src="./assets/svg/sound-off.svg" alt="사운드 꺼짐" class="sound-icon sound-off" style="display:none;">
+      </button>
+
+      <!-- 2) 메인 메뉴로 이동 팝업 -->
+      <div class="popup" id="popupToMain" aria-hidden="true">
+        <div class="popup__scrim"></div>
+        <div class="popup__box" role="dialog" aria-modal="true">
+          <p>메인 메뉴로 이동하시겠습니까?</p>
+          <div class="popup__actions">
+            <button class="popup-btn" data-role="confirm-main">네</button>
+            <button class="popup-btn" data-role="cancel-main">아니오</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3) 다음 챕터 이동 팝업 -->
+      <div class="popup" id="popupNextChapter" aria-hidden="true">
+        <div class="popup__scrim"></div>
+        <div class="popup__box" role="dialog" aria-modal="true">
+          <p>다음 챕터로 이동하시겠습니까?</p>
+          <div class="popup__actions">
+            <button class="popup-btn" data-role="goto-next">다음 챕터</button>
+            <button class="popup-btn" data-role="goto-main">메인으로 가기</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4) 씬 타이틀 (챕터 시작 시) -->
+      <div class="scene-title" id="sceneTitle" aria-hidden="true">
+        <div class="scene-title__scrim"></div>
+        <div class="scene-title__text">
+          <h2 id="sceneTitleHeading">Chapter 1: 첫 만남</h2>
+          <p id="sceneTitleSub">"Play NOWZ" 야구단의 신임 코치가 되다.</p>
+        </div>
+      </div>
+
+      <!-- 5) 메인 배경 -->
+      <div class="layer-bg" id="bg">
+        <img id="bgImage" src="./assets/bg/bg_gate.png" alt="">
+      </div>
+
+      <!-- 6) 캐릭터 (중앙 정렬, 하단 고정) -->
+      <div class="layer-char" id="characterArea">
+        <img id="characterImage" src="./assets/char/char_null.png" alt="">
+      </div>
+
+      <!-- 7) 대화창 + 네임라벨 (통합) -->
+      <div class="dialog-container" id="dialogContainer" aria-hidden="true" style="opacity: 0; visibility: hidden;">
+        <!-- 네임라벨 (대화창 왼쪽 상단) -->
+        <div class="name-label" id="nameLabel">
+          <span id="speakerName">name</span>
+        </div>
+        
+        <!-- 대화창 -->
+        <div class="dialog-box" id="dialogBox">
+          <div class="dialog-text" id="dialogText">
+            dialogue
+          </div>
+        </div>
+      </div>
+
+      <!-- 8) 오토 버튼 -->
+      <button class="auto-btn" id="autoBtn" aria-pressed="false">AUTO</button>
+
+      <!-- 9) 선택지 (등장 시 60% 블랙 솔리드 + 버튼 1~2개) -->
+      <div class="choice-layer" id="choiceLayer" aria-hidden="true">
+        <div class="choice-layer__scrim"></div>
+        <div class="choice-layer__buttons" id="choiceButtons">
+          <!-- JSON으로 버튼 주입 -->
+        </div>
+      </div>
+
+      <!-- 10) 내레이션 화면 (narration_button, monologue 용) -->
+      <div class="screen-overlay" id="screenOverlay" aria-hidden="true">
+        <div class="screen-overlay__scrim"></div>
+        <div class="screen-overlay__content">
+          <div class="screen-text" id="screenText"></div>
+          <button class="screen-btn" id="screenBtn" style="display:none;">계속</button>
+        </div>
+      </div>
+
+      <!-- 11) 엔딩 선택지 레이어는 JS에서 동적으로 생성됨 -->
+
+    </div>
+  </section>
+
+  <!-- ==================== Page 4: Ending ==================== -->
+  <section id="page-ending" class="page" style="display:none;">
+
+    <!-- 사운드 on/off 버튼 (좌측 상단) -->
+    <button class="sound-toggle" aria-label="사운드 켜기/끄기">
+        <img src="./assets/svg/sound-on.svg" alt="사운드 켜짐" class="sound-icon sound-on">
+        <img src="./assets/svg/sound-off.svg" alt="사운드 꺼짐" class="sound-icon sound-off" style="display:none;">
+    </button>
+
+    <!-- Section 1: 캐릭터 프로필 -->
+    <section id="profile" class="section">
+        <div class="profile-container">
+            <!-- 캐릭터 이미지 영역 -->
+            <div class="character-area">
+                <!-- 개별 캐릭터용 -->
+                <div class="character-image-wrapper individual-layout">
+                    <div class="character-img"></div>
+                    <div class="sign-img"></div>
+                </div>
+
+                <!-- 팀 프로필용 - PC -->
+                <div class="team-image-wrapper team-layout team-pc">
+                    <div class="team-img"></div>
+                </div>
+
+                <!-- 팀 프로필용 - 태블릿/모바일 캐러셀 -->
+                <div class="team-carousel-wrapper team-layout team-mobile">
+                    <!-- Radio Inputs (숨김) -->
+                    <input type="radio" name="carousel" id="slide1" class="carousel-radio" checked>
+                    <input type="radio" name="carousel" id="slide2" class="carousel-radio">
+                    <input type="radio" name="carousel" id="slide3" class="carousel-radio">
+                    <input type="radio" name="carousel" id="slide4" class="carousel-radio">
+                    <input type="radio" name="carousel" id="slide5" class="carousel-radio">
+                    <input type="radio" name="carousel" id="slide6" class="carousel-radio">
+
+                    <!-- 이전 버튼 (Labels) -->
+                    <div class="carousel-controls prev-controls">
+                        <label for="slide6" class="carousel-btn prev" aria-label="이전"></label>
+                        <label for="slide1" class="carousel-btn prev" aria-label="이전"></label>
+                        <label for="slide2" class="carousel-btn prev" aria-label="이전"></label>
+                        <label for="slide3" class="carousel-btn prev" aria-label="이전"></label>
+                        <label for="slide4" class="carousel-btn prev" aria-label="이전"></label>
+                        <label for="slide5" class="carousel-btn prev" aria-label="이전"></label>
+                    </div>
+
+                    <!-- 슬라이드 컨테이너 -->
+                    <div class="carousel-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="carousel-img carousel-img-team"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-img carousel-img-hyeonbin"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-img carousel-img-yoon"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-img carousel-img-yeonwoo"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-img carousel-img-jinhyuk"></div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="carousel-img carousel-img-siyun"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 다음 버튼 (Labels) -->
+                    <div class="carousel-controls next-controls">
+                        <label for="slide2" class="carousel-btn next" aria-label="다음"></label>
+                        <label for="slide3" class="carousel-btn next" aria-label="다음"></label>
+                        <label for="slide4" class="carousel-btn next" aria-label="다음"></label>
+                        <label for="slide5" class="carousel-btn next" aria-label="다음"></label>
+                        <label for="slide6" class="carousel-btn next" aria-label="다음"></label>
+                        <label for="slide1" class="carousel-btn next" aria-label="다음"></label>
+                    </div>
+
+                    <!-- 인디케이터 (Labels) -->
+                    <div class="carousel-indicators">
+                        <label for="slide1" class="indicator" aria-label="슬라이드 1"></label>
+                        <label for="slide2" class="indicator" aria-label="슬라이드 2"></label>
+                        <label for="slide3" class="indicator" aria-label="슬라이드 3"></label>
+                        <label for="slide4" class="indicator" aria-label="슬라이드 4"></label>
+                        <label for="slide5" class="indicator" aria-label="슬라이드 5"></label>
+                        <label for="slide6" class="indicator" aria-label="슬라이드 6"></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 프로필 정보 + 스탯 영역 -->
+            <div class="info-stats-wrapper">
+                <!-- 프로필 정보 영역 -->
+                <div class="profile-info">
+                    <div class="position-badge">포지션</div>
+                    <div class="name-section">
+                        <h1 class="name-ko">이름</h1>
+                        <div class="name-en-voice-wrapper">
+                            <p class="name-en">Name</p>
+                            <button class="voice-btn" aria-label="음성 재생">
+                                <img src="./assets/svg/sound_char.svg" alt="voice icon" class="voice-icon" />
+                                <span class="voice-text">Voice</span>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="character-desc">이곳에는 각 캐릭터를 대표하는 설명이 들어갈 예정입니다.</p>
+                </div>
+
+                <!-- 스테이터스 게이지 영역 -->
+                <div class="stats-area">
+                    <!-- 체력 -->
+                    <div class="stat-item">
+                        <span class="stat-label">체력</span>
+                        <span class="stat-value">85%</span>
+                        <div class="gauge-container">
+                            <div class="gauge-background">
+                                <div class="gauge-fill" style="--gauge-percent: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 승부욕 -->
+                    <div class="stat-item">
+                        <span class="stat-label">승부욕</span>
+                        <span class="stat-value">92%</span>
+                        <div class="gauge-container">
+                            <div class="gauge-background">
+                                <div class="gauge-fill" style="--gauge-percent: 92%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 컨디션 -->
+                    <div class="stat-item">
+                        <span class="stat-label">컨디션</span>
+                        <span class="stat-value">78%</span>
+                        <div class="gauge-container">
+                            <div class="gauge-background">
+                                <div class="gauge-fill" style="--gauge-percent: 78%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 집중력 -->
+                    <div class="stat-item">
+                        <span class="stat-label">집중력</span>
+                        <span class="stat-value">88%</span>
+                        <div class="gauge-container">
+                            <div class="gauge-background">
+                                <div class="gauge-fill" style="--gauge-percent: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 순발력 -->
+                    <div class="stat-item">
+                        <span class="stat-label">순발력</span>
+                        <span class="stat-value">75%</span>
+                        <div class="gauge-container">
+                            <div class="gauge-background">
+                                <div class="gauge-fill" style="--gauge-percent: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: 배경 + 텍스트 + 버튼 -->
+    <section id="section2" class="section">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <!-- 제목 -->
+            <h1 class="title">결과 제목</h1>
+            
+            <!-- 해시태그 그룹 -->
+            <div class="hashtags">
+                <span class="hashtag">#해시태그1</span>
+                <span class="hashtag">#해시태그2</span>
+                <span class="hashtag">#해시태그3</span>
+            </div>
+            
+            <!-- 설명 -->
+            <p class="description">
+                엔딩 설명이 이곳에 들어갑니다.
+            </p>
+            
+            <!-- 버튼 그룹 -->
+            <div class="button-group">
+                <button class="btn btn-share">결과 공유하기</button>
+                <button class="btn btn-main">메인으로 가기</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: 앨범 페이지 -->
+    <section id="section3" class="section">
+        <div class="album-page">
+            <!-- Left: CD Player -->
+            <div class="player" aria-label="CD Player">
+                <div class="player-inner">
+                    <div class="sleeve" aria-hidden="true"></div>
+                    <div class="clip-window" aria-hidden="true">
+                        <div class="disc" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: 앨범 정보 -->
+            <div class="album-info" aria-label="Album Info">
+                <h1 class="album-title">NOWZ 3rd Single — Play Ball</h1>
+                <p class="album-sub">Release 2025.11.26 | 6:00 PM (KST)</p>
+                <div class="album-meta">
+                    <span id="dday" class="pill">D-Day</span>
+                    <span class="divider">•</span>
+                    <span class="pill" id="status">Coming Soon</span>
+                </div>
+
+                <!-- MV 버튼 (릴리즈 이후 자동 표시) -->
+                <div id="mv-button" class="mv-button-wrapper" style="display:none;">
+                    <a href="https://www.youtube.com/watch?v=YOUR_MV_LINK" target="_blank" rel="noopener noreferrer" class="btn-mv">Watch the MV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section 4: 디졸브 슬라이드 + 텍스트 -->
+    <section id="section4" class="section">
+        <div class="slideshow-container">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
+            <div class="slide slide4"></div>
+        </div>
+        <div class="section4-overlay"></div>
+        <div class="section4-content">
+            <p class="section4-text">
+                당신은 'Play NOWZ' 야구단의 코치로 임명받았다.<br>
+                기뻐할 틈도 없이, 눈앞의 현실은 생각보다 정신없다.<br>
+                각자의 성향도, 성격도, 리듬도 다른 선수들.<br>
+                훈련도, 멘탈 케어도, 경기 전략도 전부 당신 손에 달린 지금—<br>
+                어수선하지만 묘하게 끌리는 이 팀과 함께 1군으로 나아가볼까.
+            </p>
+            <button class="btn btn-main">메인으로 가기</button>
+        </div>
+    </section>
+
+    <!-- Section 5: SNS 링크 -->
+    <section id="section5" class="section">
+        <div class="section5-content">
+            <h2 class="section5-title">NOWZ의 다른 이야기가 궁금하다면?</h2>
+            <div class="sns-links">
+                <a href="https://www.instagram.com/nowz_official" target="_blank" rel="noopener noreferrer" class="sns-btn sns-instagram">
+                    <span class="sns-icon">📷</span>
+                    <span class="sns-name">Instagram</span>
+                </a>
+                <a href="https://x.com/CUBE_NOWZ" target="_blank" rel="noopener noreferrer" class="sns-btn sns-x">
+                    <span class="sns-icon">𝕏</span>
+                    <span class="sns-name">X (Twitter)</span>
+                </a>
+                <a href="https://berriz.in/ko/nowz/" target="_blank" rel="noopener noreferrer" class="sns-btn sns-berriz">
+                    <span class="sns-icon">B</span>
+                    <span class="sns-name">Berriz</span>
+                </a>
+                <a href="https://www.youtube.com/@CUBE_NOWZ" target="_blank" rel="noopener noreferrer" class="sns-btn sns-youtube">
+                    <span class="sns-icon">▶</span>
+                    <span class="sns-name">YouTube</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <script>
+        // 페이지 로드시 게이지바 채우기 애니메이션 자동 실행
+        window.addEventListener('load', () => {
+            const gaugeFills = document.querySelectorAll('.gauge-fill');
+            
+            gaugeFills.forEach(fill => {
+                fill.style.animation = 'fillGauge 5.5s ease-out forwards';
+            });
+        });
+
+        // 캐러셀 스와이프 기능 (태블릿/모바일에서만)
+        (function initCarouselSwipe() {
+            if (window.innerWidth > 1024) return; // PC에서는 실행 안 함
+            
+            const track = document.querySelector('.carousel-track');
+            const radioButtons = document.querySelectorAll('.carousel-radio');
+            
+            if (!track || radioButtons.length === 0) return;
+            
+            let currentIndex = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            // 터치 시작
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            // 터치 종료
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // 왼쪽 스와이프 (다음)
+                        currentIndex = Math.min(currentIndex + 1, radioButtons.length - 1);
+                    } else {
+                        // 오른쪽 스와이프 (이전)
+                        currentIndex = Math.max(currentIndex - 1, 0);
+                    }
+                    radioButtons[currentIndex].checked = true;
+                }
+            }
+            
+            // 현재 체크된 radio 인덱스 찾기
+            radioButtons.forEach((radio, index) => {
+                if (radio.checked) {
+                    currentIndex = index;
+                }
+            });
+        })();
+
+        // D-Day 기준: 11월 26일 자정
+        const DDAY_DATE = '2025-11-26T00:00:00+09:00';
+        // 버튼 활성화 기준: 11월 26일 오후 6시
+        const RELEASE_TIME = '2025-11-26T18:00:00+09:00';
+
+        (function(){
+            const ddayTarget = new Date(DDAY_DATE);
+            const releaseTarget = new Date(RELEASE_TIME);
+            const now = new Date();
+            const $dday = document.getElementById('dday');
+            const $status = document.getElementById('status');
+            const $mvButton = document.getElementById('mv-button');
+
+            // D-day 계산 (한국 시간대 기준으로 날짜만 비교)
+            // 한국 시간대로 날짜 문자열 생성
+            const kstOptions = { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' };
+            
+            const targetDateStr = ddayTarget.toLocaleDateString('en-CA', kstOptions); // YYYY-MM-DD
+            const nowDateStr = now.toLocaleDateString('en-CA', kstOptions); // YYYY-MM-DD
+            
+            const targetDateOnly = new Date(targetDateStr + 'T00:00:00');
+            const nowDateOnly = new Date(nowDateStr + 'T00:00:00');
+            
+            const daysDiff = Math.round((targetDateOnly - nowDateOnly) / (1000*60*60*24));
+            
+            if (daysDiff > 0) {
+                $dday.textContent = `D-${daysDiff}`;
+            } else if (daysDiff === 0) {
+                $dday.textContent = 'D-Day';
+            } else {
+                $dday.textContent = `D+${Math.abs(daysDiff)}`;
+            }
+
+            // 버튼 활성화는 11월 26일 오후 6시 기준
+            const releaseTime = releaseTarget.getTime() - now.getTime();
+            
+            if (releaseTime > 0) {
+                $status.textContent = 'Coming Soon';
+                $mvButton.style.display = 'none';
+            } else {
+                $status.textContent = 'Play NOWZ';
+                $mvButton.style.display = 'block';
+            }
+        })();
+
+    </script>
+
+    <!-- 엔딩 데이터 로드 스크립트 -->
+    <script src="./js/ending.js"></script>
+
+  </section>
+
+    
+  </section>
+
+  <!-- ==================== JavaScript Files ==================== -->
+  <script src="./js/sound-manager.js"></script>
+  <script src="./js/intro.js"></script>
+  <script src="./js/chapter-select.js"></script>
+  <script src="./js/dialogue.js"></script>
+  <script src="./js/main.js"></script>
+  
+  <script>
+    // 마우스 클릭 후 포커스 제거 (전역)
+    document.addEventListener('mouseup', (e) => {
+      const el = e.target.closest('button,a');
+      if (el && el.blur) el.blur();
+    });
+  </script>
+</body>
+</html>

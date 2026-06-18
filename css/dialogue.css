@@ -1,0 +1,858 @@
+/* ===== Dialogue View Container ===== */
+.view-dialogue{
+  min-height:100svh;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ===== Transition Layer (흰색 플래시, 검은색 페이드) ===== */
+.transition-layer{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.transition-layer.active{
+  opacity: 1;
+}
+.transition-layer.white-flash{
+  background: #ffffff;
+}
+.transition-layer.black-fade{
+  background: #000000;
+}
+
+/* ===== 1. 챕터 선택 버튼 (우측 상단) ===== */
+.chapter-select-btn{
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.chapter-select-btn:hover{
+  opacity: .8;
+  transform: scale(1.05);
+}
+.chapter-select-btn:active{
+  transform: scale(0.95);
+}
+.chapter-select-btn img{
+  display: block;
+  width: clamp(36px, 5vw, 48px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+@media (max-width: 768px){
+  .chapter-select-btn img{ width: clamp(32px, 6vw, 40px); }
+}
+
+/* ===== 사운드 on/off 버튼 (dialogue 페이지 전용 - 좌측 상단) ===== */
+#page-dialogue .sound-toggle {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  left: max(16px, env(safe-area-inset-left));
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#page-dialogue .sound-toggle:hover {
+  opacity: .8;
+  transform: scale(1.05);
+}
+#page-dialogue .sound-toggle:active {
+  transform: scale(0.95);
+}
+#page-dialogue .sound-toggle img {
+  display: block;
+  width: clamp(36px, 5vw, 48px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
+}
+@media (max-width: 768px) {
+  #page-dialogue .sound-toggle img { 
+    width: clamp(32px, 6vw, 40px); 
+  }
+}
+
+/* ===== 2. 팝업 공통 스타일 ===== */
+.popup{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.popup[aria-hidden="true"]{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.popup__scrim{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.5);
+  cursor: pointer;
+}
+.popup__box{
+  position: relative;
+  z-index: 2001;
+  background: #fff;
+  border-radius: clamp(16px, 2vw, 20px);
+  padding: clamp(40px, 5vh, 60px) clamp(30px, 4vw, 50px);
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,.2);
+  animation: popupSlideIn .3s ease;
+  width: clamp(320px, 80vw, 700px);
+  max-width: 90%;
+}
+@keyframes popupSlideIn{
+  from{ transform: translateY(-20px); opacity: 0; }
+  to{ transform: translateY(0); opacity: 1; }
+}
+.popup__box p{
+  font-size: clamp(18px, 2.6vw, 26px);
+  font-weight: 500;
+  color: #666;
+  margin: 0 0 clamp(35px, 5vh, 50px);
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+}
+.popup__actions{
+  display: flex;
+  gap: clamp(12px, 2vw, 24px);
+  justify-content: center;
+}
+@media (max-width: 480px){
+  .popup__actions{
+    flex-direction: column;
+    gap: clamp(10px, 2vh, 12px);
+  }
+}
+
+/* 팝업 버튼 */
+.popup-btn{
+  background: #E8E8E8;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: clamp(10px, 1.5vw, 12px);
+  padding: clamp(12px, 1.6vh, 16px) clamp(40px, 6vw, 60px);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: background .2s ease, transform .15s ease;
+  letter-spacing: -0.3px;
+  min-width: clamp(140px, 18vw, 180px);
+}
+.popup-btn:hover{
+  background: #D8D8D8;
+  transform: translateY(-1px);
+}
+.popup-btn:active{
+  background: #C8C8C8;
+  transform: translateY(0);
+}
+@media (max-width: 480px){
+  .popup-btn{
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* ===== 3. 씬 타이틀 (페이드 효과 추가) ===== */
+.scene-title{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.scene-title.fade-in{
+  animation: sceneTitleFadeIn .8s ease forwards;
+  pointer-events: auto;
+}
+@keyframes sceneTitleFadeIn{
+  0% { 
+    opacity: 0; 
+    visibility: visible; 
+  }
+  100% { 
+    opacity: 1; 
+    visibility: visible; 
+  }
+}
+.scene-title[aria-hidden="false"]{
+  visibility: visible;
+  pointer-events: auto;
+}
+.scene-title[aria-hidden="true"]{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.scene-title__scrim{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.6);
+}
+.scene-title__text{
+  position: relative;
+  z-index: 101;
+  text-align: center;
+  color: #fff;
+  padding: clamp(20px, 4vw, 40px);
+}
+.scene-title__text h2{
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  margin: 0 0 clamp(12px, 2vh, 20px);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+.scene-title__text p{
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 400;
+  margin: 0;
+  opacity: .95;
+  line-height: 1.5;
+}
+@media (max-width: 768px){
+  .scene-title__text h2{ font-size: clamp(24px, 5vw, 36px); }
+  .scene-title__text p{ font-size: clamp(14px, 3vw, 18px); }
+}
+
+/* ===== 4. 배경 레이어 ===== */
+.layer-bg{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+}
+.layer-bg img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== 5. 캐릭터 레이어 (모바일에서 더 크게) ===== */
+.layer-char{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+.layer-char[aria-hidden="true"]{
+  opacity: 0;
+  pointer-events: none;
+}
+.layer-char img{
+  display: block;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* PC (1440x1024) */
+@media (min-width: 1025px){
+  .layer-char img{
+    max-height: 88vh;
+    max-width: clamp(520px, 44vw, 680px);
+  }
+}
+/* Tablet (768x1024) */
+@media (min-width: 481px) and (max-width: 1024px){
+  .layer-char img{
+    max-height: 82vh;
+    max-width: clamp(420px, 52vw, 580px);
+  }
+}
+/* Mobile (360x800) - 더 크게 */
+@media (max-width: 480px){
+  .layer-char img{
+    max-height: 72vh;
+    max-width: clamp(340px, 92vw, 480px);
+  }
+}
+
+/* ===== 6. 대화창 컨테이너 ===== */
+.dialog-container{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* PC */
+@media (min-width: 1025px){
+  .dialog-container{
+    bottom: clamp(40px, 5vh, 70px);
+    max-width: min(92vw, 1200px);
+    padding: 0 clamp(20px, 3vw, 40px);
+  }
+}
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px){
+  .dialog-container{
+    bottom: clamp(30px, 4vh, 55px);
+    max-width: min(94vw, 760px);
+    padding: 0 clamp(16px, 2.5vw, 30px);
+  }
+}
+/* Mobile */
+@media (max-width: 480px){
+  .dialog-container{
+    bottom: clamp(20px, 3vh, 40px);
+    max-width: 96vw;
+    padding: 0 clamp(12px, 3vw, 20px);
+  }
+}
+
+/* ===== 7. 네임라벨 (대화창 왼쪽 상단) ===== */
+.name-label{
+  position: relative;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: clamp(8px, 1.2vw, 12px) clamp(8px, 1.2vw, 12px) 0 0;
+  padding: clamp(8px, 1vh, 12px) clamp(20px, 3vw, 32px);
+  margin-bottom: -1px;
+  margin-left: clamp(20px, 3vw, 40px);
+  box-shadow: 0 -2px 8px rgba(0,0,0,.15);
+  transition: opacity .3s ease;
+  z-index: 2;
+}
+.name-label[aria-hidden="true"]{
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+.name-label span{
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+  display: block;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+/* PC */
+@media (min-width: 1025px){
+  .name-label span{
+    font-size: clamp(15px, 1.3vw, 18px);
+  }
+}
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px){
+  .name-label span{
+    font-size: clamp(14px, 1.8vw, 17px);
+  }
+}
+/* Mobile */
+@media (max-width: 480px){
+  .name-label{
+    margin-left: clamp(12px, 3vw, 20px);
+    padding: clamp(6px, 1vh, 9px) clamp(16px, 4vw, 24px);
+  }
+  .name-label span{
+    font-size: clamp(13px, 3.6vw, 15px);
+  }
+}
+
+/* ===== 8. 대화창 ===== */
+.dialog-box{
+  width: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(40, 40, 40, 0.96) 0%, 
+    rgba(30, 30, 30, 0.98) 100%);
+  border-radius: clamp(12px, 1.5vw, 18px);
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 이미지 참고: 왼쪽 상단 탭 효과 */
+.dialog-box::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 3vw, 40px);
+  width: clamp(80px, 12vw, 140px);
+  height: clamp(3px, 0.4vh, 4px);
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.3) 0%, 
+    rgba(255,255,255,0.1) 100%);
+  border-radius: 0 0 2px 2px;
+}
+
+.dialog-text{
+  color: #fff;
+  line-height: 1.75;
+  word-break: keep-all;
+  letter-spacing: -0.3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+/* PC (1440x1024) */
+@media (min-width: 1025px){
+  .dialog-box{
+    padding: clamp(22px, 2.5vh, 32px) clamp(32px, 3.5vw, 48px);
+    padding-bottom: clamp(24px, 2.8vh, 36px);
+  }
+  .dialog-text{
+    font-size: clamp(16px, 1.4vw, 19px);
+    min-height: clamp(60px, 8vh, 90px);
+  }
+}
+/* Tablet (768x1024) */
+@media (min-width: 481px) and (max-width: 1024px){
+  .dialog-box{
+    padding: clamp(18px, 2.2vh, 26px) clamp(26px, 3.2vw, 38px);
+    padding-bottom: clamp(20px, 2.5vh, 30px);
+  }
+  .dialog-text{
+    font-size: clamp(15px, 2vw, 17px);
+    min-height: clamp(55px, 7vh, 80px);
+  }
+}
+/* Mobile (360x800) - 잘림 방지 */
+@media (max-width: 480px){
+  .dialog-box{
+    padding: clamp(14px, 2vh, 20px) clamp(18px, 4vw, 26px);
+    padding-bottom: clamp(16px, 2.2vh, 24px);
+    border-radius: clamp(10px, 2vw, 14px);
+  }
+  .dialog-text{
+    font-size: clamp(13px, 3.6vw, 15px);
+    line-height: 1.65;
+    min-height: clamp(50px, 10vh, 70px);
+    max-height: 30vh;
+    overflow-y: auto;
+  }
+  /* 모바일 스크롤바 스타일 */
+  .dialog-text::-webkit-scrollbar{
+    width: 4px;
+  }
+  .dialog-text::-webkit-scrollbar-thumb{
+    background: rgba(255,255,255,.2);
+    border-radius: 2px;
+  }
+}
+
+/* ===== 9. AUTO 버튼 ===== */
+.auto-btn{
+  position: fixed;
+  z-index: 70;
+  background: rgba(60,60,60,.85);
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: clamp(6px, 1vw, 8px);
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all .2s ease;
+  backdrop-filter: blur(4px);
+  letter-spacing: 0.5px;
+}
+.auto-btn:hover{
+  background: rgba(195,24,8,.9);
+  transform: scale(1.05);
+}
+.auto-btn:active{
+  transform: scale(0.95);
+}
+.auto-btn[aria-pressed="true"]{
+  background: #c31808;
+  box-shadow: 0 0 12px rgba(195,24,8,.6);
+}
+
+/* PC */
+@media (min-width: 1025px){
+  .auto-btn{
+    bottom: clamp(50px, 6.5vh, 80px);
+    right: clamp(50px, 5vw, 90px);
+    padding: clamp(10px, 1.2vh, 14px) clamp(22px, 2.4vw, 32px);
+    font-size: clamp(14px, 1.2vw, 17px);
+  }
+}
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px){
+  .auto-btn{
+    bottom: clamp(40px, 5vh, 60px);
+    right: clamp(35px, 4.5vw, 60px);
+    padding: clamp(9px, 1.2vh, 12px) clamp(20px, 3vw, 28px);
+    font-size: clamp(13px, 1.8vw, 16px);
+  }
+}
+/* Mobile */
+@media (max-width: 480px){
+  .auto-btn{
+    bottom: clamp(28px, 4vh, 45px);
+    right: clamp(12px, 3vw, 20px);
+    padding: clamp(7px, 1vh, 10px) clamp(16px, 4.5vw, 22px);
+    font-size: clamp(11px, 3.2vw, 13px);
+  }
+}
+
+/* ===== 10. 선택지 레이어 (일반 선택지) ===== */
+.choice-layer{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.choice-layer[aria-hidden="true"]{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.choice-layer__scrim{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.6);
+}
+.choice-layer__buttons{
+  position: relative;
+  z-index: 81;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 22px);
+  padding: clamp(16px, 3vw, 24px);
+}
+.choice-btn{
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 2px solid rgba(255,255,255,.2);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  border-radius: clamp(10px, 1.5vw, 14px);
+  padding: clamp(14px, 2vh, 20px) clamp(24px, 3.5vw, 36px);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+}
+.choice-btn:hover{
+  opacity: .95;
+  background: rgba(195,24,8,.9);
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+.choice-btn:active{
+  transform: scale(0.98);
+}
+
+/* PC */
+@media (min-width: 1025px){
+  .choice-btn{
+    min-width: clamp(360px, 30vw, 480px);
+    font-size: clamp(17px, 1.5vw, 20px);
+  }
+}
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px){
+  .choice-btn{
+    min-width: clamp(320px, 40vw, 420px);
+    font-size: clamp(16px, 2.2vw, 19px);
+  }
+}
+/* Mobile */
+@media (max-width: 480px){
+  .choice-layer__buttons{
+    gap: clamp(12px, 2vh, 16px);
+    width: 90%;
+  }
+  .choice-btn{
+    width: 100%;
+    font-size: clamp(14px, 3.8vw, 16px);
+    padding: clamp(12px, 2vh, 16px) clamp(20px, 4vw, 28px);
+  }
+}
+
+/* ===== 10-2. 엔딩 선택지 (2x3 그리드) ===== */
+.ending-choice-layer{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.ending-choice-layer[aria-hidden="true"]{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.ending-choice-layer__scrim{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.6);
+}
+
+/* 질문과 버튼을 감싸는 컨테이너 */
+.ending-choice-layer__content{
+  position: relative;
+  z-index: 81;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 2vh, 20px);
+  padding: clamp(16px, 3vw, 24px);
+}
+
+/* 상단 질문 텍스트 */
+.ending-choice-question{
+  color: #fff;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+  line-height: 1.4;
+  padding: 0 clamp(16px, 3vw, 24px);
+  animation: fadeIn 0.5s ease;
+}
+
+.ending-choice-layer__buttons{
+  position: relative;
+  display: grid;
+  gap: clamp(10px, 1.5vh, 16px);
+  width: 100%;
+}
+
+/* PC/Tablet - 2x3 그리드 */
+@media (min-width: 481px){
+  .ending-choice-layer__content{
+    padding: clamp(20px, 3vh, 40px) clamp(16px, 3vw, 24px);
+    gap: clamp(16px, 2.5vh, 24px);
+  }
+  .ending-choice-layer__buttons{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    max-width: min(90vw, 900px);
+  }
+  .ending-choice-question{
+    font-size: clamp(20px, 2.2vw, 26px);
+  }
+}
+
+/* Mobile - 1열 세로 스택 + safe-area 고려 */
+@media (max-width: 480px){
+  .ending-choice-layer__content{
+    /* 상단: safe-area + 뒤로가기 버튼 공간 확보 */
+    padding-top: max(70px, calc(env(safe-area-inset-top) + 60px));
+    /* 하단: safe-area 확보 */
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    width: 100%;
+    justify-content: flex-start;
+    gap: clamp(10px, 1.5vh, 16px);
+  }
+  .ending-choice-layer__buttons{
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: clamp(8px, 1vh, 12px);
+  }
+  .ending-choice-question{
+    font-size: clamp(16px, 4.5vw, 20px);
+    padding: 0 clamp(12px, 2vw, 16px);
+    margin-bottom: clamp(4px, 1vh, 8px);
+  }
+}
+
+.ending-choice-btn{
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 2px solid rgba(255,255,255,.2);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: all .2s ease;
+  border-radius: clamp(10px, 1.5vw, 14px);
+  padding: clamp(12px, 2vh, 18px) clamp(16px, 2.5vw, 24px);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  min-height: clamp(60px, 9vh, 85px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ending-choice-btn:hover{
+  opacity: .95 !important;
+  background: rgba(195,24,8,.9) !important;
+  transform: scale(1.05) !important;
+  border-color: rgba(255,255,255,.4) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4) !important;
+}
+.ending-choice-btn:active{
+  transform: scale(0.98);
+}
+
+/* PC */
+@media (min-width: 1025px){
+  .ending-choice-btn{
+    font-size: clamp(16px, 1.4vw, 19px);
+  }
+}
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1024px){
+  .ending-choice-btn{
+    font-size: clamp(15px, 2vw, 18px);
+  }
+}
+/* Mobile */
+@media (max-width: 480px){
+  .ending-choice-btn{
+    font-size: clamp(14px, 3.8vw, 16px);
+    min-height: clamp(54px, 8vh, 70px);
+  }
+}
+
+/* ===== 11. 화면 오버레이 (narration_button, monologue) ===== */
+.screen-overlay{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.screen-overlay[aria-hidden="true"]{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.screen-overlay__scrim{
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.6);
+}
+.screen-overlay__content{
+  position: relative;
+  z-index: 91;
+  text-align: center;
+  padding: clamp(24px, 4vw, 48px);
+  max-width: min(90vw, 900px);
+  color: #fff;
+}
+.screen-text{
+  color: #fff;
+  font-size: clamp(16px, 2.4vw, 22px);
+  line-height: 1.8;
+  margin-bottom: clamp(24px, 4vh, 40px);
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  white-space: pre-line; /* 줄바꿈 지원 */
+}
+.screen-btn{
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 2px solid rgba(255,255,255,.3);
+  color: #fff;
+  padding: clamp(12px, 1.6vh, 16px) clamp(40px, 6vw, 60px);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 600;
+  border-radius: clamp(10px, 1.5vw, 12px);
+  cursor: pointer;
+  transition: all .2s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.screen-btn:hover{
+  opacity: .95;
+  background: rgba(195,24,8,.9);
+  transform: scale(1.05);
+  border-color: rgba(255,255,255,.4);
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+}
+.screen-btn:active{
+  transform: scale(0.98);
+}
+
+/* ===== 초기 로딩 시 대화창 숨김 ===== */
+
+.dialog-container.is-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+}
